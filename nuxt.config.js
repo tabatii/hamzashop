@@ -5,7 +5,7 @@ export default {
     name: process.env.APP_NAME,
     api: process.env.API_URL,
     blog: process.env.BLOG_URL,
-    paypal: process.env.PAYPAL_KEY,
+    paypal: process.env.PAYPAL_ID,
   },
 
   router: {
