@@ -4,8 +4,7 @@ export default {
   publicRuntimeConfig: {
     name: process.env.APP_NAME,
     url: process.env.APP_URL,
-    blog: process.env.BLOG_URL,
-    designer: process.env.DESIGNER
+    blog: process.env.BLOG_URL
   },
 
   router: {
