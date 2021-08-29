@@ -1,9 +1,24 @@
 <template>
-	<h1>404</h1>
+	<div>
+		<section class="bg"></section>
+		<section class="text-center mb-16">
+			<h1>4O4</h1>
+			<p>Page Not Found</p>
+		</section>
+	</div>
 </template>
 
-<script>
-	export default {
-		layout: 'empty'
+<style scoped>
+	h1 {
+		color: var(--v-primary-lighten2);
+		font-size: 15rem;
+		font-weight: 100;
+		line-height: 1;
 	}
-</script>
+	p {
+		color: var(--v-primary-lighten2);
+		font-size: 3rem;
+		font-weight: 300;
+		margin-bottom: 0;
+	}
+</style>
