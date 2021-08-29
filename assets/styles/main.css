@@ -1,0 +1,23 @@
+section {
+	padding: 75px 0;
+}
+
+.bg {
+	background-color: var(--v-background-base);
+}
+
+.line {
+	height: 6px;
+	border-radius: 3px;
+	background-color: var(--v-primary-base);
+}
+
+.swal2-container {
+	font-family: "Roboto", sans-serif;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+	font-weight: 400 !important;
+	box-shadow: none !important;
+}
