@@ -1,6 +1,10 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  env: {
+    API_URL: process.env.API_URL,
+  },
+
   publicRuntimeConfig: {
     name: process.env.APP_NAME,
     url: process.env.APP_URL,
