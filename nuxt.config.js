@@ -8,10 +8,6 @@ export default {
     designer: process.env.DESIGNER
   },
 
-  server: {
-    port: 8080, // default: 3000
-  },
-
   router: {
     middleware: 'main',
   },
