@@ -74,8 +74,8 @@
 				show: false,
 				errors: {},
 				form: {
-					email: 'otman@example.com',
-					password: '123456'
+					email: null,
+					password: null
 				}
 			}
 		}
