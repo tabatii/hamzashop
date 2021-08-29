@@ -3,6 +3,7 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   env: {
     API_URL: process.env.API_URL,
+    PAYPAL_KEY: process.env.PAYPAL_KEY,
   },
 
   publicRuntimeConfig: {

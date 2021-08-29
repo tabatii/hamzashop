@@ -23,7 +23,7 @@
 						height: 52,
 					},
 					createOrder: () => {
-						return fetch(`${process.env.API_URL}/paypal/create`, {
+						return fetch(`${this.env.API_URL}/paypal/create`, {
 							method: 'POST',
 							headers: this.headers,
 							body: JSON.stringify({
@@ -37,7 +37,7 @@
 						})
 					},
 					onApprove: (data) => {
-						return fetch(`${process.env.API_URL}/paypal/capture`, {
+						return fetch(`${this.env.API_URL}/paypal/capture`, {
 							method: 'POST',
 							headers: this.headers,
 							body: JSON.stringify({
@@ -55,7 +55,7 @@
 		},
 		mounted () {
 			let script = document.createElement('script')
-			script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.PAYPAL_KEY}`
+			script.src = `https://www.paypal.com/sdk/js?client-id=${this.env.PAYPAL_KEY}`
 			document.body.appendChild(script)
 			script.addEventListener('load', () => {
 				this.paypal()
