@@ -1,15 +1,12 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  env: {
-    API_URL: process.env.API_URL,
-    PAYPAL_KEY: process.env.PAYPAL_KEY,
-  },
-
   publicRuntimeConfig: {
     name: process.env.APP_NAME,
     url: process.env.APP_URL,
+    api: process.env.API_URL,
     blog: process.env.BLOG_URL,
+    paypal: process.env.PAYPAL_KEY,
   },
 
   router: {
