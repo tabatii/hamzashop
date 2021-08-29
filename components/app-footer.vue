@@ -58,7 +58,7 @@
 			<v-divider></v-divider>
 			<div class="d-flex py-4">
 				<span class="body-1 font-weight-thin">Designed By Tabatii</span>
-				<span class="body-1 font-weight-thin ml-auto">{{ $config.url }} | © 2021</span>
+				<span class="body-1 font-weight-thin ml-auto">{{ $config.name }} | © 2021</span>
 			</div>
 		</v-container>
 	</v-footer>
