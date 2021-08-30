@@ -133,12 +133,14 @@
 				<p>These Terms of Use and any policies or operating rules posted by us on the Site or in respect to the Marketplace Offerings constitute the entire agreement and understanding between you and us. Our failure to exercise or enforce any right or provision of these Terms of Use shall not operate as a waiver of such right or provision. These Terms of Use operate to the fullest extent permissible by law. We may assign any or all of our rights and obligations to others at any time. We shall not be responsible or liable for any loss, damage, delay, or failure to act caused by any cause beyond our reasonable control. If any provision or part of a provision of these Terms of Use is determined to be unlawful, void, or unenforceable, that provision or part of the provision is deemed severable from these Terms of Use and does not affect the validity and enforceability of any remaining provisions. There is no joint venture, partnership, employment or agency relationship created between you and us as a result of these Terms of Use or use of the Marketplace Offerings. You agree that these Terms of Use will not be construed against us by virtue of having drafted them. You hereby waive any and all defenses you may have based on the electronic form of these Terms of Use and the lack of signing by the parties hereto to execute these Terms of Use.</p>
 				<h2>Contact Us</h2>
 				<p>In order to resolve a complaint regarding the Site or the Marketplace Offerings or to receive further information regarding use of the Site or the Marketplace Offerings, please contact us at: </p>
-				<strong v-text="$config.name"></strong><br />
-				<strong>Quartier Bni Makada Lakdima Rue 54 N 31</strong><br />
-				<strong>Tanger, 90000</strong><br />
-				<strong>Morocco</strong><br />
-				<strong>Phone: +212 634-343842</strong><br />
-				<strong>hamzaelara@gmail.com</strong><br />
+				<p>
+					<strong v-text="$config.name"></strong><br />
+					<strong>Quartier Bni Makada Lakdima Rue 54 N 31</strong><br />
+					<strong>Tanger, 90000</strong><br />
+					<strong>Morocco</strong><br />
+					<strong>Phone: +212 634-343842</strong><br />
+					<strong>hamzaelara@gmail.com</strong>
+				</p>
 				<p>These terms of use were created using <a href="https://termly.io/products/terms-and-conditions-generator" rel="external nofollow noopener" target="_blank">Termly’s Terms and Conditions Generator</a>.</p>
 			</v-container>
 		</section>
