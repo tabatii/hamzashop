@@ -1,11 +1,42 @@
 <template>
 	<header>
+		<v-app-bar color="secondary" height="42" tag="div" flat>
+			<v-container>
+				<div class="d-flex">
+					<v-menu offset-y>
+						<template v-slot:activator="{ on, attrs }">
+							<v-btn small text dark depressed v-bind="attrs" v-on="on">Currency</v-btn>
+						</template>
+						<v-list dense>
+							<v-list-item link @click="currency('MAD')">
+								<v-list-item-avatar class="mr-2" size="20">
+									<v-img src="/template/ma.png" />
+								</v-list-item-avatar>
+								<v-list-item-title>MAD</v-list-item-title>
+							</v-list-item>
+							<v-list-item link @click="currency('EUR')">
+								<v-list-item-avatar class="mr-2" size="20">
+									<v-img src="/template/eu.png" />
+								</v-list-item-avatar>
+								<v-list-item-title>EUR</v-list-item-title>
+							</v-list-item>
+							<v-list-item link @click="currency('USD')">
+								<v-list-item-avatar class="mr-2" size="20">
+									<v-img src="/template/usa.png" />
+								</v-list-item-avatar>
+								<v-list-item-title>USD</v-list-item-title>
+							</v-list-item>
+						</v-list>
+					</v-menu>
+				</div>
+			</v-container>
+		</v-app-bar>
 		<v-app-bar color="white" height="75" tag="div" flat>
 			<v-container>
 				<v-row no-gutters>
 					<v-col md="4">
 						<v-toolbar-title>
-							<app-logo></app-logo>
+							<app-logo />
 						</v-toolbar-title>
 					</v-col>
 					<v-col md="5">
@@ -38,6 +69,16 @@
 			...mapState(['auth'])
 		},
 		methods: {
+			currency (code) {
+				fetch(`https://api.exchangerate.host/convert?from=MAD&to=${code}`)
+				.then(response => {
+					return response.json()
+				}).then(response => {
+					this.$cookies.set('cr', response.info.rate)
+					this.$cookies.set('cc', code)
+					this.$nuxt.refresh()
+				})
+			},
 			logout () {
 				this.loading = true
 				this.$axios.$post('/auth/logout')

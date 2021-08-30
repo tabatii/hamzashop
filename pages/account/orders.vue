@@ -87,7 +87,8 @@
 									<div class="ml-4">
 										<p class="text-capitalize mb-0" v-text="order.product.title"></p>
 										<div class="body-2">
-											<span>{{ order.unit_price }} DH</span>
+											<span v-text="$convert(order.unit_price)"></span>
+											<span v-text="$cookies.get('cc')"></span>
 											<span class="text--secondary">x{{ order.quantity }}</span>
 										</div>
 									</div>
@@ -95,8 +96,8 @@
 							</v-col>
 							<v-col cols="2">
 								<div class="error--text">
-									<span v-text="order.total_amount"></span>
-									<span>DH</span>
+									<span v-text="$convert(order.total_amount)"></span>
+									<span v-text="$cookies.get('cc')"></span>
 								</div>
 							</v-col>
 							<v-col cols="2">

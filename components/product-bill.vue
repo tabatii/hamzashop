@@ -10,14 +10,14 @@
 					</v-badge>
 				</v-sheet>
 			</v-col>
-			<v-col cols="8">
+			<v-col cols="7">
 				<p class="body-1 text-capitalize px-2 mb-0" v-text="product.title"></p>
 			</v-col>
-			<v-col cols="2">
+			<v-col cols="3">
 				<div class="d-flex justify-end">
 					<div class="font-weight-medium">
-						<span v-text="product.price"></span>
-						<span>DH</span>
+						<span v-text="$convert(product.price)"></span>
+						<span v-text="$cookies.get('cc')"></span>
 					</div>
 				</div>
 			</v-col>
@@ -28,14 +28,14 @@
 				<div class="text--secondary">Subtotal</div>
 				<div class="font-weight-medium">
 					<span v-text="subtotal"></span>
-					<span>DH</span>
+					<span v-text="$cookies.get('cc')"></span>
 				</div>
 			</div>
 			<div class="d-flex justify-space-between">
 				<div class="text--secondary">Shipping</div>
 				<div class="font-weight-medium">
-					<span v-text="shipping"></span>
-					<span>DH</span>
+					<span v-text="$convert(shipping)"></span>
+					<span v-text="$cookies.get('cc')"></span>
 				</div>
 			</div>
 		</div>
@@ -44,7 +44,7 @@
 			<div class="text--secondary">Total</div>
 			<div class="font-weight-medium error--text">
 				<span v-text="total"></span>
-				<span>DH</span>
+				<span v-text="$cookies.get('cc')"></span>
 			</div>
 		</div>
 	</div>
@@ -57,10 +57,12 @@
 		},
 		computed: {
 			total () {
-				return (this.product.price * this.$cookies.get('q')) + this.shipping
+				let result = (this.product.price * this.$cookies.get('q')) + this.shipping
+				return this.$convert(result)
 			},
 			subtotal () {
-				return this.product.price * this.$cookies.get('q')
+				let result = this.product.price * this.$cookies.get('q')
+				return this.$convert(result)
 			}
 		},
 		data () {

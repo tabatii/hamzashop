@@ -16,8 +16,8 @@
 					<v-col cols="6">
 						<h1 class="text-h4 text-capitalize mb-4" v-text="product.title"></h1>
 						<div class="text-h3 font-weight-light error--text mb-8">
-							<span v-text="product.price"></span>
-							<span>DH</span>
+							<span v-text="$convert(product.price)"></span>
+							<span v-text="$cookies.get('cc')"></span>
 						</div>
 						<div class="mb-8">
 							<v-btn :to="`/products/${products.usa}`" class="mr-2" depressed>USA</v-btn>
