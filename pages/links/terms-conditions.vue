@@ -139,6 +139,7 @@
 				<strong>Morocco</strong><br />
 				<strong>Phone: +212 634-343842</strong><br />
 				<strong>hamzaelara@gmail.com</strong><br />
+				<p>These terms of use were created using <a href="https://termly.io/products/terms-and-conditions-generator" rel="external nofollow noopener" target="_blank">Termly’s Terms and Conditions Generator</a>.</p>
 			</v-container>
 		</section>
 	</div>
