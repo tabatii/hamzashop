@@ -23,7 +23,17 @@
 						<v-img src="/template/main.jpg" lazy-src="/template/placeholder.png" width="100%" />
 					</v-col>
 					<v-col cols="6" class="d-flex flex-column justify-center pa-16">
-						
+						<div>
+							<h3 class="text-h4">About Minoxidil.</h3>
+							<div class="line mb-6" style="width:50px"></div>
+							<p>
+								Minoxidil is a medication used for the treatment of male-pattern hair loss. It is an antihypertensive vasodilator. It is available as a generic medication and over the counter.
+							</p>
+							<p>
+								Minoxidil is scientifically proven to improve hair growth and potentially help men with male pattern baldness regrow lost hair. In the tests used to secure FDA approval, minoxidil was primarily tested on the top of the scalp and crown, resulting in a common belief that it only works on these areas.
+							</p>
+							<v-btn :to="`/products/${product}`" color="primary" depressed large nuxt>Shop now</v-btn>
+						</div>
 					</v-col>
 				</v-row>
 			</v-container>
