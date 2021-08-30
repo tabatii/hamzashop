@@ -76,12 +76,10 @@
 		},
 		async asyncData ({params, $axios}) {
 			let product = await $axios.$get(`/products/${params.id}`)
-			let products = await $axios.$get('/home')
-			return {product, products}
+			return {product}
 		},
 		data () {
 			return {
-				products: {},
 				product: {},
 				qty: 1
 			}
