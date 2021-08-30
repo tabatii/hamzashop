@@ -20,8 +20,8 @@
 							<span v-text="$cookies.get('cc')"></span>
 						</div>
 						<div class="mb-8">
-							<v-btn to="/products/117501955295965" class="mr-2" depressed>USA</v-btn>
-							<v-btn to="/products/117501955295966" class="mr-2" depressed>Spain</v-btn>
+							<v-btn :to="`/products/${products[0].id}`" class="mr-2" depressed>USA</v-btn>
+							<v-btn :to="`/products/${products[1].id}`" class="mr-2" depressed>Spain</v-btn>
 						</div>
 						<ul class="mb-16">
 							<li class="text-capitalize" v-for="(feature, i) in product.features" :key="i" v-text="feature"></li>
@@ -76,10 +76,12 @@
 		},
 		async asyncData ({params, $axios}) {
 			let product = await $axios.$get(`/products/${params.id}`)
-			return {product}
+			let products = await $axios.$get('/products')
+			return {product, products}
 		},
 		data () {
 			return {
+				products: [],
 				product: {},
 				qty: 1
 			}

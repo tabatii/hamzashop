@@ -38,12 +38,12 @@
 		<v-app-bar color="white" height="75" tag="div" flat>
 			<v-container>
 				<v-row no-gutters>
-					<v-col md="4">
+					<v-col md="3">
 						<v-toolbar-title>
 							<app-logo />
 						</v-toolbar-title>
 					</v-col>
-					<v-col md="5">
+					<v-col md="6">
 						<div>
 							<v-btn to="/" color="primary" text nuxt>Home</v-btn>
 							<v-btn to="/contact" color="primary" text nuxt>Contact</v-btn>

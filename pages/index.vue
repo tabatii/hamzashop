@@ -11,29 +11,57 @@
 						Minoxidil solution and foam are used to help hair growth in the treatment of male pattern baldness.
 					</p>
 					<div>
-						<v-btn :to="`/products/${product}`" class="mx-1" color="primary" rounded depressed x-large nuxt>Shop now</v-btn>
+						<v-btn :to="`/products/${products[0].id}`" class="mx-1" color="primary" rounded depressed x-large nuxt>Shop now</v-btn>
 					</div>
 				</div>
 			</v-container>
 		</section>
 		<section>
 			<v-container>
-				<v-row>
-					<v-col cols="6">
-						<v-img src="/template/main.jpg" lazy-src="/template/placeholder.png" width="100%" />
+				<h3 class="text-h4 text-center">Our Products</h3>
+				<div class="line mx-auto mb-12" style="width:50px"></div>
+				<v-row class="mb-16">
+					<v-col cols="6" class="pa-8">
+						<v-hover>
+							<template v-slot:default="{ hover }">
+								<div style="position:relative">
+									<v-img src="/template/product-1.jpg" lazy-src="/template/placeholder.png" width="100%" />
+									<div class="bg text-center pa-4 pt-0">
+										<p class="text-h4 font-weight-light">Kirkland Minoxidil</p>
+										<p class="text-h5 font-weight-light error--text">
+											<span v-text="$convert(products[0].price)"></span>
+											<span v-text="$cookies.get('cc')"></span>
+										</p>
+									</div>
+									<v-scroll-x-transition>
+										<v-overlay v-if="hover" color="primary" opacity="0.3" absolute>
+											<v-btn :to="`/products/${products[0].id}`" color="primary" fab><v-icon>mdi-eye</v-icon></v-btn>
+										</v-overlay>
+									</v-scroll-x-transition>
+								</div>
+							</template>
+						</v-hover>
 					</v-col>
-					<v-col cols="6" class="d-flex flex-column justify-center pa-16">
-						<div>
-							<h3 class="text-h4">About Minoxidil.</h3>
-							<div class="line mb-6" style="width:50px"></div>
-							<p>
-								Minoxidil is a medication used for the treatment of male-pattern hair loss. It is an antihypertensive vasodilator. It is available as a generic medication and over the counter.
-							</p>
-							<p>
-								Minoxidil is scientifically proven to improve hair growth and potentially help men with male pattern baldness regrow lost hair. In the tests used to secure FDA approval, minoxidil was primarily tested on the top of the scalp and crown, resulting in a common belief that it only works on these areas.
-							</p>
-							<v-btn :to="`/products/${product}`" color="primary" depressed large nuxt>Shop now</v-btn>
-						</div>
+					<v-col cols="6" class="pa-8">
+						<v-hover>
+							<template v-slot:default="{ hover }">
+								<div style="position:relative">
+									<v-img src="/template/product-2.jpg" lazy-src="/template/placeholder.png" width="100%" />
+									<div class="bg text-center pa-4 pt-0">
+										<p class="text-h4 font-weight-light">Minoxidil Viñas</p>
+										<p class="text-h5 font-weight-light error--text">
+											<span v-text="$convert(products[1].price)"></span>
+											<span v-text="$cookies.get('cc')"></span>
+										</p>
+									</div>
+									<v-scroll-x-reverse-transition>
+										<v-overlay v-if="hover" color="primary" opacity="0.3" absolute>
+											<v-btn :to="`/products/${products[1].id}`" color="primary" fab><v-icon>mdi-eye</v-icon></v-btn>
+										</v-overlay>
+									</v-scroll-x-reverse-transition>
+								</div>
+							</template>
+						</v-hover>
 					</v-col>
 				</v-row>
 			</v-container>
@@ -42,11 +70,11 @@
 			<v-row no-gutters>
 				<v-col cols="6">
 					<div class="video-player">
-						<v-img src="/template/main-2.png" width="100%" />
+						<v-img src="/template/main-1.png" width="100%" />
 						<v-icon class="play-icon" color="white" size="92">mdi-play-circle-outline</v-icon>
 					</div>
 				</v-col>
-				<v-col cols="6" class="d-flex flex-column justify-center pa-16">
+				<v-col cols="6" class="d-flex align-center pa-16">
 					<div style="max-width:60%">
 						<h3 class="text-h4">How it works.</h3>
 						<div class="line mb-6" style="width:50px"></div>
@@ -68,7 +96,7 @@
 		<section>
 			<v-container class="py-16">
 				<v-row>
-					<v-col cols="6" class="d-flex flex-column justify-center">
+					<v-col cols="6" class="d-flex align-center pa-8">
 						<div>
 							<h3 class="text-h4">Easy to use.</h3>
 							<div class="line mb-8" style="width:50px"></div>
@@ -100,15 +128,15 @@
 							</div>
 						</div>
 					</v-col>
-					<v-col cols="6">
-						<v-img src="/template/main-3.jpg" lazy-src="/template/placeholder.png" aspect-ratio="4/3" width="100%" />
+					<v-col cols="6" class="pa-8">
+						<v-img src="/template/main-2.jpg" lazy-src="/template/placeholder.png" aspect-ratio="4/3" width="100%" />
 					</v-col>
 				</v-row>
 			</v-container>
 		</section>
 		<section class="bg">
 			<v-container>
-				<h3 class="text-h4 text-center">Join Our Newsletter</h3>
+				<h3 class="text-h4 text-center">Join our Newsletter</h3>
 				<div class="line mx-auto mb-12" style="width:50px"></div>
 				<v-row justify="center">
 					<v-col cols="6">
@@ -161,14 +189,14 @@
 			}
 		},
 		async asyncData ({$axios}) {
-			let product = await $axios.$get('/home')
-			return {product}
+			let products = await $axios.$get('/products')
+			return {products}
 		},
 		data () {
 			return {
 				loading: false,
 				dialog: false,
-				product: null,
+				products: [],
 				errors: {},
 				form: {
 					email: null
