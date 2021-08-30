@@ -68,14 +68,18 @@
 		<section>
 			<v-container class="py-16">
 				<v-row>
-					<v-col cols="6" class="d-flex flex-column justify-center pa-12">
+					<v-col cols="6" class="d-flex flex-column justify-center">
 						<div>
 							<h3 class="text-h4">Easy to use.</h3>
 							<div class="line mb-8" style="width:50px"></div>
 							<div>
 								<div class="d-flex">
 									<span><v-icon color="primary" size="20">mdi-checkbox-blank-circle</v-icon></span>
-									<p class="ml-4">Make sure your hair and scalp are dry (you don’t need to shampoo before each application).</p>
+									<p class="ml-4">Knowing how to use minoxidil correctly will lead to the best results (hello amazing head of hair!).</p>
+								</div>
+								<div class="d-flex">
+									<span><v-icon color="primary" size="20">mdi-checkbox-blank-circle</v-icon></span>
+									<p class="ml-4">First, make sure your hair and scalp are dry (you don’t need to shampoo before each application).</p>
 								</div>
 								<div class="d-flex">
 									<span><v-icon color="primary" size="20">mdi-checkbox-blank-circle</v-icon></span>
