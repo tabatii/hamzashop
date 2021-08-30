@@ -22,7 +22,7 @@
 					<v-col cols="6">
 						<v-img src="/template/main.jpg" lazy-src="/template/placeholder.png" width="100%" />
 					</v-col>
-					<v-col cols="6" class="d-flex flex-column justify-center pa-12">
+					<v-col cols="6" class="d-flex flex-column justify-center pa-16">
 						<div>
 							<h3 class="text-h4">About Minoxidil.</h3>
 							<div class="line mb-6" style="width:50px"></div>
