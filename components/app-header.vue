@@ -1,11 +1,14 @@
 <template>
 	<header>
-		<v-app-bar color="secondary" height="42" tag="div" flat>
+		<v-app-bar color="white" height="42" tag="div" flat>
 			<v-container>
-				<div class="d-flex">
+				<div class="d-flex justify-end">
 					<v-menu offset-y>
 						<template v-slot:activator="{ on, attrs }">
-							<v-btn small text dark depressed v-bind="attrs" v-on="on">Currency</v-btn>
+							<v-btn small depressed v-bind="attrs" v-on="on">
+								<span class="pl-1">Currency</span>
+								<v-icon size="20">mdi-chevron-down</v-icon>
+							</v-btn>
 						</template>
 						<v-list dense>
 							<v-list-item link @click="currency('MAD')">
@@ -31,6 +34,7 @@
 				</div>
 			</v-container>
 		</v-app-bar>
+		<v-divider></v-divider>
 		<v-app-bar color="white" height="75" tag="div" flat>
 			<v-container>
 				<v-row no-gutters>
