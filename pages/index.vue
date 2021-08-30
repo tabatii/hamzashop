@@ -42,7 +42,7 @@
 			<v-row no-gutters>
 				<v-col cols="6">
 					<div class="video-player">
-						<v-img src="/template/main-2.png" lazy-src="/template/placeholder.png" width="100%" />
+						<v-img src="/template/main-2.png" width="100%" />
 						<v-icon class="play-icon" color="white" size="92">mdi-play-circle-outline</v-icon>
 					</div>
 				</v-col>

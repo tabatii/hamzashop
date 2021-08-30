@@ -1,9 +1,22 @@
 <template>
 	<nuxt-link to="/" class="logo">
-		<span class="part-1" v-text="$config.name.split(' ')[0]"></span>
-		<span class="part-2" v-text="$config.name.split(' ')[1]"></span>
+		<span class="part-1" v-text="partOne"></span>
+		<span class="part-2" v-text="partTwo"></span>
 	</nuxt-link>
 </template>
+
+<script>
+	export default {
+		computed: {
+			partOne () {
+				return this.$config.name.substring(0, 4)
+			},
+			partTwo () {
+				return this.$config.name.substring(4)
+			}
+		}
+	}
+</script>
 
 <style scoped>
 	.logo {

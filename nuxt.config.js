@@ -3,6 +3,7 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   publicRuntimeConfig: {
     name: process.env.APP_NAME,
+    url: process.env.APP_URL,
     api: process.env.API_URL,
     blog: process.env.BLOG_URL,
     paypal: process.env.PAYPAL_ID,
