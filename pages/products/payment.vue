@@ -59,7 +59,7 @@
 					<v-col class="pl-12" cols="5">
 						<product-bill :product="product"></product-bill>
 						<div v-if="method === 'card'">
-							<v-btn color="secondary" block depressed x-large>Credit Card</v-btn>
+							<card-btn></card-btn>
 						</div>
 						<div v-else-if="method === 'paypal'" style="height:52px">
 							<paypal-btn></paypal-btn>

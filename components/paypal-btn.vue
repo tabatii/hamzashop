@@ -1,7 +1,5 @@
 <template>
-	<div>
-		<div ref="paypal"></div>
-	</div>
+	<div ref="paypal"></div>
 </template>
 
 <script>
