@@ -2,7 +2,7 @@
 	<div>
 		<section class="intro bg pa-0">
 			<v-container>
-				<div class="d-flex">
+				<div class="d-flex justify-end">
 					<img src="/template/header.png" />
 				</div>
 				<div class="intro-text">
