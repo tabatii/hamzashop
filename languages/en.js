@@ -25,7 +25,7 @@ module.exports = {
 				title: 'Website  policy',
 				terms: 'Terms & Conditions',
 				privacy: 'Privacy policy',
-				refund: 'Refund policy',
+				shipping: 'Shipping rates',
 			},
 			quick: {
 				title: 'Quick links',

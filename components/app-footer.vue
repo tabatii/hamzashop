@@ -26,6 +26,9 @@
 						<div>
 							<v-btn to="/links/privacy-policy" plain small>{{ $lang('footer.links.website.privacy') }}</v-btn>
 						</div>
+						<div>
+							<v-btn to="/links/shipping-rates" plain small>{{ $lang('footer.links.website.shipping') }}</v-btn>
+						</div>
 					</v-col>
 					<v-col cols="2">
 						<p class="body-1 px-3" v-text="$lang('footer.links.quick.title')"></p>

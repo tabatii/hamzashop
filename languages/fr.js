@@ -25,7 +25,7 @@ module.exports = {
 				title: 'Politique du site',
 				terms: 'Termes & Conditions',
 				privacy: 'Politique de confidentialité',
-				refund: 'Politique de remboursement',
+				shipping: 'Frais d\'envoi',
 			},
 			quick: {
 				title: 'Liens rapides',
