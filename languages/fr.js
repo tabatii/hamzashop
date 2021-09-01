@@ -23,7 +23,7 @@ module.exports = {
 		links: {
 			website: {
 				title: 'Politique du site',
-				terms: 'Termes & Conditions',
+				terms: 'Termes et Conditions',
 				privacy: 'Politique de confidentialité',
 				shipping: 'Frais d\'envoi',
 			},
