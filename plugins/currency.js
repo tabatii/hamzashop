@@ -1,9 +1,8 @@
 export default function ({app}, inject) {
-	inject('convert', amount => {
-		if (app.$cookies.get('cc') !== 'MAD') {
-			let result = amount * app.$cookies.get('cr')
-			return result.toFixed(2)
+	inject('currency', amount => {
+		if (!app.$cookies.get('cc') || app.$cookies.get('cc') === 'MAD') {
+			return amount
 		}
-		return amount
+		return (amount * app.$cookies.get('cr')).toFixed(2)
 	})
 }

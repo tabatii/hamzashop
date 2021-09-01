@@ -6,14 +6,14 @@
 					<div class="pa-16">
 						<v-snackbar v-if="errors.auth" v-model="snackbar" color="error" timeout="10000" top text>{{ errors.auth }}</v-snackbar>
 						<v-text-field
-							label="Email"
 							v-model="form.email"
+							:label="$lang('login.form.email')"
 							:error-messages="errors.email"
 							outlined autofocus
 						/>
 						<v-text-field
-							label="Password"
 							v-model="form.password"
+							:label="$lang('login.form.password')"
 							:error-messages="errors.password"
 							:append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
 							:type="show ? 'text' : 'password'"
@@ -21,19 +21,23 @@
 							outlined
 						/>
 						<div>
-							<v-btn color="primary" :loading="loading" block depressed x-large @click="login">Login</v-btn>
+							<v-btn color="primary" :loading="loading" block depressed x-large @click="login">
+								{{ $lang('login.form.submit') }}
+							</v-btn>
 							<v-row class="align-center" no-gutters>
 								<v-col>
 									<v-divider></v-divider>
 								</v-col>
 								<v-col cols="1" class="my-2">
-									<center>or</center>
+									<center v-text="$lang('login.separator')"></center>
 								</v-col>
 								<v-col>
 									<v-divider></v-divider>
 								</v-col>
 							</v-row>
-							<v-btn to="/auth/register" block depressed x-large nuxt>Register</v-btn>
+							<v-btn to="/auth/register" block depressed x-large nuxt>
+								{{ $lang('login.form.btn') }}
+							</v-btn>
 						</div>
 					</div>
 				</v-sheet>

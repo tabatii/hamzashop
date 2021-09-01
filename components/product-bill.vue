@@ -16,7 +16,7 @@
 			<v-col cols="3">
 				<div class="d-flex justify-end">
 					<div class="font-weight-medium">
-						<span v-text="$convert(product.price)"></span>
+						<span v-text="$currency(product.price)"></span>
 						<span v-text="$cookies.get('cc')"></span>
 					</div>
 				</div>
@@ -34,7 +34,7 @@
 			<div class="d-flex justify-space-between">
 				<div class="text--secondary">Shipping</div>
 				<div class="font-weight-medium">
-					<span v-text="$convert(shipping)"></span>
+					<span v-text="$currency(shipping)"></span>
 					<span v-text="$cookies.get('cc')"></span>
 				</div>
 			</div>
@@ -58,11 +58,11 @@
 		computed: {
 			total () {
 				let result = (this.product.price * this.$cookies.get('q')) + this.shipping
-				return this.$convert(result)
+				return this.$currency(result)
 			},
 			subtotal () {
 				let result = this.product.price * this.$cookies.get('q')
-				return this.$convert(result)
+				return this.$currency(result)
 			}
 		},
 		data () {

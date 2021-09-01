@@ -3,7 +3,7 @@
 		<section class="bg"></section>
 		<section class="text-center mb-16">
 			<h1>4O4</h1>
-			<p>Page Not Found</p>
+			<p v-text="$lang('error.text')"></p>
 		</section>
 	</div>
 </template>

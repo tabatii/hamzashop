@@ -3,12 +3,10 @@
 		<v-container class="py-0">
 			<section>
 				<v-row>
-					<v-col cols="4">
-						<p class="body-1 mb-5">About us</p>
-						<p class="font-weight-thin">
-							This website is dedicated to selling hair care products and treating all hair problems such as hair loss, genetic and non-genetic baldness, alopecia, dandruff and itching.
-						</p>
-						<div>
+					<v-col cols="3">
+						<p class="body-1 mb-5" v-text="$lang('footer.about.title')"></p>
+						<p class="font-weight-thin" v-text="$lang('footer.about.text')"></p>
+						<!--<div>
 							<v-btn href="https://www.facebook.com" target="_blank" icon>
 								<v-icon size="24px">mdi-facebook</v-icon>
 							</v-btn>
@@ -18,20 +16,37 @@
 							<v-btn href="https://www.instagram.com" target="_blank" icon>
 								<v-icon size="24px">mdi-instagram</v-icon>
 							</v-btn>
+						</div>-->
+					</v-col>
+					<v-col cols="3">
+						<p class="body-1 px-3" v-text="$lang('footer.links.website.title')"></p>
+						<div>
+							<v-btn to="/links/terms-conditions" plain small>{{ $lang('footer.links.website.terms') }}</v-btn>
+						</div>
+						<div>
+							<v-btn to="/links/privacy-policy" plain small>{{ $lang('footer.links.website.privacy') }}</v-btn>
+						</div>
+						<div>
+							<v-btn to="/links/refund-policy" plain small>{{ $lang('footer.links.website.refund') }}</v-btn>
 						</div>
 					</v-col>
-					<v-col cols="2" class="px-0">
-						<p class="body-1 px-3">Quick Links</p>
-						<div><v-btn to="/contact" plain small>Contact us</v-btn></div>
-						<div><v-btn :href="$config.blog" target="_blank" plain small>Blog</v-btn></div>
-						<div><v-btn to="/auth/login" plain small>Login</v-btn></div>
-						<div><v-btn to="/auth/register" plain small>Sign up</v-btn></div>
-					</v-col>
-					<v-col cols="2" class="px-0">
-						<p class="body-1 px-3">Other Links</p>
-						<div><v-btn to="/links/terms-conditions" plain small>Terms & Conditions</v-btn></div>
-						<div><v-btn to="/links/privacy-policy" plain small>Privacy policy</v-btn></div>
-						<div><v-btn to="/links/refund-policy" plain small>Refund policy</v-btn></div>
+					<v-col cols="2">
+						<p class="body-1 px-3" v-text="$lang('footer.links.quick.title')"></p>
+						<div>
+							<v-btn to="/contact" plain small>{{ $lang('footer.links.quick.contact') }}</v-btn>
+						</div>
+						<div>
+							<v-btn :href="$config.blog" target="_blank" plain small>{{ $lang('footer.links.quick.blog') }}</v-btn>
+						</div>
+						<div v-if="auth.loggedIn">
+							<v-btn to="/auth/login" plain small>{{ $lang('footer.links.quick.orders') }}</v-btn>
+						</div>
+						<div v-if="!auth.loggedIn">
+							<v-btn to="/auth/login" plain small>{{ $lang('footer.links.quick.login') }}</v-btn>
+						</div>
+						<div v-if="!auth.loggedIn">
+							<v-btn to="/auth/register" plain small>{{ $lang('footer.links.quick.register') }}</v-btn>
+						</div>
 					</v-col>
 					<v-col cols="4">
 						<div class="d-flex align-center mb-4">
@@ -57,9 +72,18 @@
 			</section>
 			<v-divider></v-divider>
 			<div class="d-flex py-4">
-				<span class="body-1 font-weight-thin">Designed By Tabatii</span>
+				<span class="body-1 font-weight-thin">{{ $lang('footer.design') }} Tabatii</span>
 				<span class="body-1 font-weight-thin ml-auto">{{ $config.name }} | © 2021</span>
 			</div>
 		</v-container>
 	</v-footer>
 </template>
+
+<script>
+	import { mapState } from 'vuex'
+	export default {
+		computed: {
+			...mapState(['auth'])
+		}
+	}
+</script>

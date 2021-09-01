@@ -16,7 +16,7 @@
 					<v-col cols="6">
 						<h1 class="text-h4 text-capitalize mb-4" v-text="product.title"></h1>
 						<div class="text-h3 font-weight-light error--text mb-8">
-							<span v-text="$convert(product.price)"></span>
+							<span v-text="$currency(product.price)"></span>
 							<span v-text="$cookies.get('cc')"></span>
 						</div>
 						<div class="mb-8">
@@ -46,7 +46,7 @@
 		</section>
 		<section class="mb-16">
 			<v-container>
-				<h3 class="text-h5">Product Description</h3>
+				<h3 class="text-h5" v-text="$lang('product.description.title')"></h3>
 				<div class="line mb-6" style="width:50px"></div>
 				<div v-html="product.description"></div>
 			</v-container>

@@ -5,7 +5,7 @@
 			<v-dialog v-model="dialog" max-width="700">
 				<v-card>
 					<v-card-title class="body-1 pa-4">
-						<span class="text--secondary">Order ID :</span>
+						<span class="text--secondary">{{ $lang('orders.id') }} :</span>
 						<span class="ml-2" v-text="active.id"></span>
 					</v-card-title>
 					<v-divider></v-divider>
@@ -13,38 +13,38 @@
 						<v-row v-if="active.address">
 							<v-col cols="6">
 								<v-row no-gutters>
-									<v-col cols="5" class="text--secondary">Name :</v-col>
+									<v-col cols="5" class="text--secondary">{{ $lang('orders.dialog.address.name') }} :</v-col>
 									<v-col cols="7" class="text-capitalize" v-text="active.address.name"></v-col>
 								</v-row>
 								<v-row no-gutters>
-									<v-col cols="5" class="text--secondary">Mobile :</v-col>
+									<v-col cols="5" class="text--secondary">{{ $lang('orders.dialog.address.mobile') }} :</v-col>
 									<v-col cols="7" class="text-capitalize" v-text="active.address.mobile"></v-col>
 								</v-row>
 								<v-row no-gutters>
-									<v-col cols="5" class="text--secondary">Address :</v-col>
+									<v-col cols="5" class="text--secondary">{{ $lang('orders.dialog.address.street') }} :</v-col>
 									<v-col cols="7" class="text-capitalize" v-text="active.address.street"></v-col>
 								</v-row>
 								<v-row no-gutters>
-									<v-col cols="5" class="text--secondary">City :</v-col>
+									<v-col cols="5" class="text--secondary">{{ $lang('orders.dialog.address.city') }} :</v-col>
 									<v-col cols="7" class="text-capitalize" v-text="active.address.city"></v-col>
 								</v-row>
 								<v-row no-gutters>
-									<v-col cols="5" class="text--secondary">Zip code :</v-col>
+									<v-col cols="5" class="text--secondary">{{ $lang('orders.dialog.address.zip') }} :</v-col>
 									<v-col cols="7" class="text-capitalize" v-text="active.address.zip"></v-col>
 								</v-row>
 								<v-row no-gutters>
-									<v-col cols="5" class="text--secondary">Country :</v-col>
+									<v-col cols="5" class="text--secondary">{{ $lang('orders.dialog.address.country') }} :</v-col>
 									<v-col cols="7" class="text-capitalize" v-text="active.address.country"></v-col>
 								</v-row>
 							</v-col>
 							<v-divider vertical></v-divider>
 							<v-col cols="6">
 								<v-row no-gutters>
-									<v-col cols="5" class="text--secondary">Order date :</v-col>
+									<v-col cols="5" class="text--secondary">{{ $lang('orders.dialog.info.date') }} :</v-col>
 									<v-col cols="7" class="text-capitalize" v-text="active.created_at"></v-col>
 								</v-row>
 								<v-row no-gutters>
-									<v-col cols="5" class="text--secondary">Payment method :</v-col>
+									<v-col cols="5" class="text--secondary">{{ $lang('orders.dialog.info.payment') }} :</v-col>
 									<v-col cols="7" class="text-capitalize" v-text="active.payment_method"></v-col>
 								</v-row>
 							</v-col>
@@ -52,7 +52,9 @@
 					</v-card-text>
 					<v-divider></v-divider>
 					<v-card-actions class="justify-end">
-						<v-btn color="secondary" depressed @click="dialog = false">Close</v-btn>
+						<v-btn color="secondary" depressed @click="dialog = false">
+							{{ $lang('orders.dialog.btn') }}
+						</v-btn>
 					</v-card-actions>
 				</v-card>
 			</v-dialog>
@@ -60,10 +62,10 @@
 				<v-row>
 					<v-col cols="12" class="mb-6">
 						<v-row class="bg">
-							<v-col cols="6">Overview</v-col>
-							<v-col cols="2">Total</v-col>
-							<v-col cols="2">Status</v-col>
-							<v-col cols="2">Operation</v-col>
+							<v-col cols="6" v-text="$lang('orders.table.product')"></v-col>
+							<v-col cols="2" v-text="$lang('orders.table.total')"></v-col>
+							<v-col cols="2" v-text="$lang('orders.table.status')"></v-col>
+							<v-col cols="2" v-text="$lang('orders.table.operation')"></v-col>
 						</v-row>
 					</v-col>
 					<v-col cols="12" class="mb-6" v-for="(order, i) in orders" :key="order.id">
@@ -71,7 +73,7 @@
 							<v-col cols="12" class="border-bottom">
 								<div class="d-flex">
 									<div class="body-2">
-										<span class="text--secondary">Order ID :</span>
+										<span class="text--secondary">{{ $lang('orders.id') }} :</span>
 										<span v-text="order.id"></span>
 									</div>
 									<span class="body-2 text--secondary ml-auto" v-text="order.created_at"></span>
@@ -87,7 +89,7 @@
 									<div class="ml-4">
 										<p class="text-capitalize mb-0" v-text="order.product.title"></p>
 										<div class="body-2">
-											<span v-text="$convert(order.unit_price)"></span>
+											<span v-text="$currency(order.unit_price)"></span>
 											<span v-text="$cookies.get('cc')"></span>
 											<span class="text--secondary">x{{ order.quantity }}</span>
 										</div>
@@ -96,7 +98,7 @@
 							</v-col>
 							<v-col cols="2">
 								<div class="error--text">
-									<span v-text="$convert(order.total_amount)"></span>
+									<span v-text="$currency(order.total_amount)"></span>
 									<span v-text="$cookies.get('cc')"></span>
 								</div>
 							</v-col>
@@ -105,10 +107,14 @@
 							</v-col>
 							<v-col cols="2">
 								<div class="mb-3">
-									<v-btn color="primary" small block depressed @click="details(i)">Order details</v-btn>
+									<v-btn color="primary" small block depressed @click="details(i)">
+										{{ $lang('orders.table.details') }}
+									</v-btn>
 								</div>
 								<div v-if="order.status === 'pending'">
-									<v-btn color="secondary" small block depressed @click="cancel(order.id)">Cancel</v-btn>
+									<v-btn color="secondary" small block depressed @click="cancel(order.id)">
+										{{ $lang('orders.table.cancel') }}
+									</v-btn>
 								</div>
 							</v-col>
 						</v-row>
@@ -129,8 +135,9 @@
 			confirm () {
 				return {
 					icon: 'warning',
-					title: 'Are you sure ?',
-					confirmButtonText: 'Yes',
+					title: this.$lang('orders.confirm.text'),
+					confirmButtonText: this.$lang('orders.confirm.yes'),
+					cancelButtonText: this.$lang('orders.confirm.no'),
 					showCancelButton: true,
 					reverseButtons: true
 				}

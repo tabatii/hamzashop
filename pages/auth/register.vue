@@ -5,20 +5,20 @@
 				<v-sheet class="d-flex flex-column justify-center" min-height="100vh">
 					<div class="pa-16">
 						<v-text-field
-							label="Name"
 							v-model="form.name"
+							:label="$lang('register.form.name')"
 							:error-messages="errors.name"
 							outlined autofocus
 						/>
 						<v-text-field
-							label="Email"
 							v-model="form.email"
+							:label="$lang('register.form.email')"
 							:error-messages="errors.email"
 							outlined
 						/>
 						<v-text-field
-							label="Password"
 							v-model="form.password"
+							:label="$lang('register.form.password')"
 							:error-messages="errors.password"
 							:append-icon="show.password ? 'mdi-eye' : 'mdi-eye-off'"
 							:type="show.password ? 'text' : 'password'"
@@ -26,8 +26,8 @@
 							outlined
 						/>
 						<v-text-field
-							label="Confirmation"
 							v-model="form.password_confirmation"
+							:label="$lang('register.form.confirmation')"
 							:error-messages="errors.password_confirmation"
 							:append-icon="show.confirmation ? 'mdi-eye' : 'mdi-eye-off'"
 							:type="show.confirmation ? 'text' : 'password'"
@@ -35,19 +35,23 @@
 							outlined
 						/>
 						<div>
-							<v-btn color="primary" :loading="loading" block depressed x-large @click="register">Register</v-btn>
+							<v-btn color="primary" :loading="loading" block depressed x-large @click="register">
+								{{ $lang('register.form.submit') }}
+							</v-btn>
 							<v-row class="align-center" no-gutters>
 								<v-col>
 									<v-divider></v-divider>
 								</v-col>
 								<v-col cols="1" class="my-2">
-									<center>or</center>
+									<center v-text="$lang('register.separator')"></center>
 								</v-col>
 								<v-col>
 									<v-divider></v-divider>
 								</v-col>
 							</v-row>
-							<v-btn to="/auth/login" block depressed x-large nuxt>Login</v-btn>
+							<v-btn to="/auth/login" block depressed x-large nuxt>
+								{{ $lang('register.form.btn') }}
+							</v-btn>
 						</div>
 					</div>
 				</v-sheet>
