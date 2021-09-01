@@ -105,6 +105,29 @@ module.exports = {
 			title: 'Description du produit',
 		}
 	},
+	bill: {
+		subtotal: 'Sous-total',
+		shipping: 'Expédition',
+		total: 'Total',
+	},
+	address: {
+		form: {
+			name: 'Nom et Prénom',
+			street: 'Rue',
+			details: 'Appartement, suite, étage, etc. (En option)',
+			country: 'Pays',
+			city: 'Ville',
+			zip: 'Code postal',
+			mobile: 'Mobile',
+			submit: 'Continuer',
+		}
+	},
+	payment: {
+		submit: 'Terminer la commande',
+		address: {
+			title: 'Adresse de livraison',
+		}
+	},
 	orders: {
 		id: 'Nº de commande',
 		table: {

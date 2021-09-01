@@ -105,6 +105,29 @@ module.exports = {
 			title: 'Product description',
 		}
 	},
+	bill: {
+		subtotal: 'Subtotal',
+		shipping: 'Shipping',
+		total: 'Total',
+	},
+	address: {
+		form: {
+			name: 'Full name',
+			street: 'Address',
+			details: 'Apartment, suite, floor, etc. (Optional)',
+			country: 'Country',
+			city: 'City / Town',
+			zip: 'Zip code',
+			mobile: 'Mobile',
+			submit: 'Continue',
+		}
+	},
+	payment: {
+		submit: 'Finish order',
+		address: {
+			title: 'Shipping address',
+		}
+	},
 	orders: {
 		id: 'Order Nº',
 		table: {
@@ -121,7 +144,7 @@ module.exports = {
 				name: 'Name',
 				mobile: 'Mobile',
 				street: 'Address',
-				city: 'City',
+				city: 'City / Town',
 				zip: 'Zip code',
 				country: 'Country',
 			},

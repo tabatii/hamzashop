@@ -7,7 +7,7 @@
 					<v-col class="pr-12" cols="7">
 						<div>
 							<div>
-								<div class="font-weight-medium">Shipping address :</div>
+								<div class="font-weight-medium">{{ $lang('payment.address.title') }} :</div>
 								<div class="text--secondary">
 									<span class="text-capitalize" v-text="address.street"></span>,
 									<span class="text-capitalize" v-text="address.city"></span>,
@@ -65,7 +65,9 @@
 							<paypal-btn></paypal-btn>
 						</div>
 						<div v-else-if="method === 'cash'">
-							<v-btn color="primary" :loading="loading" block depressed x-large @click="order">Finish order</v-btn>
+							<v-btn color="primary" :loading="loading" block depressed x-large @click="order">
+								{{ $lang('payment.submit') }}
+							</v-btn>
 						</div>
 					</v-col>
 				</v-row>

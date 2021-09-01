@@ -7,26 +7,26 @@
 					<v-col class="pr-12" cols="7">
 						<div>
 							<v-text-field
-								label="Full name"
 								v-model="form.name"
+								:label="$lang('address.form.name')"
 								:error-messages="errors.name"
 								outlined autofocus
 							/>
 							<v-text-field
-								label="Street"
 								v-model="form.street"
+								:label="$lang('address.form.street')"
 								:error-messages="errors.street"
 								outlined
 							/>
 							<v-text-field
-								placeholder="Apartment, suite, floor, etc. (Optional)"
 								v-model="form.details"
 								:error-messages="errors.details"
+								:placeholder="$lang('address.form.details')"
 								outlined
 							/>
 							<v-select
-								label="Country"
 								v-model="form.country"
+								:label="$lang('address.form.country')"
 								:error-messages="errors.country"
 								:items="countries"
 								outlined
@@ -34,24 +34,24 @@
 							<v-row dense>
 								<v-col md="6" class="py-0">
 									<v-text-field
-										label="City / Town"
 										v-model="form.city"
+										:label="$lang('address.form.city')"
 										:error-messages="errors.city"
 										outlined
 									/>
 								</v-col>
 								<v-col md="6" class="py-0">
 									<v-text-field
-										label="Zip Code"
 										v-model="form.zip"
+										:label="$lang('address.form.zip')"
 										:error-messages="errors.zip"
 										outlined
 									/>
 								</v-col>
 							</v-row>
 							<v-text-field
-								label="Mobile"
 								v-model="form.mobile"
+								:label="$lang('address.form.mobile')"
 								:error-messages="errors.mobile"
 								outlined
 							/>
@@ -60,7 +60,9 @@
 					<v-divider vertical inset></v-divider>
 					<v-col class="pl-12" cols="5">
 						<product-bill :product="product"></product-bill>
-						<v-btn color="primary" :loading="loading" block depressed x-large @click="next">Continue</v-btn>
+						<v-btn color="primary" :loading="loading" block depressed x-large @click="next">
+							{{ $lang('address.form.submit') }}
+						</v-btn>
 					</v-col>
 				</v-row>
 			</v-container>

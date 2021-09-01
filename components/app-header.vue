@@ -95,20 +95,6 @@
 			...mapState(['auth'])
 		},
 		methods: {
-			language (code) {
-				this.$cookies.set('lg', code, { path: '/' })
-				this.$router.go()
-			},
-			currency (code) {
-				fetch(`https://api.exchangerate.host/convert?from=MAD&to=${code}`)
-				.then(response => {
-					return response.json()
-				}).then(response => {
-					this.$cookies.set('cr', response.info.rate, { path: '/' })
-					this.$cookies.set('cc', code, { path: '/' })
-					this.$nuxt.refresh()
-				})
-			},
 			logout () {
 				this.loading = true
 				this.$axios.$post('/auth/logout')
@@ -116,6 +102,33 @@
 					this.$cookies.remove('ut')
 					this.$router.go()
 				})
+			},
+			language (code) {
+				if (code !== this.$cookies.get('lg')) {
+					this.$cookies.set('lg', code, {
+						maxAge: 60 * 60 * 24 * 60,
+						path: '/'
+					})
+					this.$router.go()
+				}
+			},
+			currency (code) {
+				if (code !== this.$cookies.get('cc')) {
+					fetch(`https://api.exchangerate.host/convert?from=MAD&to=${code}`)
+					.then(response => {
+						return response.json()
+					}).then(response => {
+						this.$cookies.set('cr', response.info.rate, {
+							maxAge: 60 * 60 * 24 * 60,
+							path: '/'
+						})
+						this.$cookies.set('cc', code, {
+							maxAge: 60 * 60 * 24 * 60,
+							path: '/'
+						})
+						this.$nuxt.refresh()
+					})
+				}
 			}
 		},
 		data () {
