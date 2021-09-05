@@ -1,15 +1,14 @@
 <template>
-	<div>
-		<section class="bg"></section>
-		<section class="text-center mb-16">
-			<h1>4O4</h1>
-			<p v-text="$lang('error.text')"></p>
-		</section>
+	<div class="text-center pa-12">
+		<h1>4O4</h1>
+		<p>Page Not Found</p>
 	</div>
 </template>
 
 <script>
 	export default {
+		middleware: 'admin',
+		layout: 'admin',
 		head: {
 			title: '404'
 		}

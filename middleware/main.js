@@ -7,7 +7,7 @@ export default function ({app, store, $axios}) {
 				app.$cookies.remove('ut')
 			}
 		})
-	} else if (! app.$cookies.get('ut') && store.state.auth.loggedIn === true) {
+	} else if (!app.$cookies.get('ut') && store.state.auth.loggedIn === true) {
 		store.commit('auth/logout')
 	}
 }

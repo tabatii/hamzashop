@@ -5,13 +5,13 @@
 				<v-sheet outlined>
 					<v-badge :content="$cookies.get('q')" overlap left>
 						<v-avatar size="100%">
-							<img :src="product.images[0]" />
+							<img :src="product.images[0].url" />
 						</v-avatar>
 					</v-badge>
 				</v-sheet>
 			</v-col>
 			<v-col cols="7">
-				<p class="body-1 text-capitalize px-2 mb-0" v-text="product.title"></p>
+				<p class="body-1 text-capitalize px-2 mb-0" v-text="product.longTitle"></p>
 			</v-col>
 			<v-col cols="3">
 				<div class="d-flex justify-end">

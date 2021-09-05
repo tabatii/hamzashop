@@ -1,5 +1,5 @@
 export default function ({app, redirect}) {
-	if (app.$cookies.get('ut')) {
+	if (!app.$cookies.get('at')) {
 		redirect('/')
 	}
 }

@@ -38,13 +38,13 @@
 						<div>
 							<v-btn :href="$config.blog" target="_blank" plain small>{{ $lang('footer.links.quick.blog') }}</v-btn>
 						</div>
-						<div v-if="auth.loggedIn">
+						<div v-if="$cookies.get('ut')">
 							<v-btn to="/auth/login" plain small>{{ $lang('footer.links.quick.orders') }}</v-btn>
 						</div>
-						<div v-if="!auth.loggedIn">
+						<div v-if="!$cookies.get('ut')">
 							<v-btn to="/auth/login" plain small>{{ $lang('footer.links.quick.login') }}</v-btn>
 						</div>
-						<div v-if="!auth.loggedIn">
+						<div v-if="!$cookies.get('ut')">
 							<v-btn to="/auth/register" plain small>{{ $lang('footer.links.quick.register') }}</v-btn>
 						</div>
 					</v-col>
@@ -78,12 +78,3 @@
 		</v-container>
 	</v-footer>
 </template>
-
-<script>
-	import { mapState } from 'vuex'
-	export default {
-		computed: {
-			...mapState(['auth'])
-		}
-	}
-</script>

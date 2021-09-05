@@ -12,12 +12,36 @@ section {
 	background-color: var(--v-primary-base);
 }
 
+.error-wrapper {
+	min-height: 14px;
+	padding: 0 .75rem;
+	margin: .5rem 0;
+}
+
+.error-text {
+	display: block;
+	color: var(--v-error-base) !important;
+	font-size: .75rem;
+	line-height: .75rem;
+}
+
 .swal2-container {
 	font-family: "Roboto", sans-serif;
 }
-
 .swal2-confirm,
 .swal2-cancel {
 	font-weight: 400 !important;
 	box-shadow: none !important;
+}
+
+.text-editor .tiptap-vuetify-editor__content {
+	min-height: 300px;
+	padding: 0;
+}
+.text-editor .tiptap-vuetify-editor__content .ProseMirror {
+	padding: 12px;
+	margin: 0 !important;
+}
+.text-editor .tiptap-vuetify-editor__content .ProseMirror p {
+	margin-top: 0 !important;
 }

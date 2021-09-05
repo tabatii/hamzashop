@@ -144,6 +144,7 @@ module.exports = {
 				name: 'Nom',
 				mobile: 'Mobile',
 				street: 'Adresse',
+				details: 'Détails',
 				city: 'Ville',
 				zip: 'Code postal',
 				country: 'Pays',

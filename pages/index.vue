@@ -8,8 +8,8 @@
 				<div class="intro-text">
 					<h3 class="text-h2 mb-4" v-text="$lang('home.intro.title')"></h3>
 					<p class="text-h5 font-weight-light px-1 mb-6" v-text="$lang('home.intro.text')"></p>
-					<div>
-						<v-btn :to="`/products/${products[0].id}`" class="mx-1" color="primary" rounded depressed x-large nuxt>
+					<div v-if="products.data.length">
+						<v-btn :to="`/products/${products.data[0].id}`" class="mx-1" color="primary" rounded depressed x-large nuxt>
 							{{ $lang('home.intro.btn') }}
 						</v-btn>
 					</div>
@@ -21,44 +21,23 @@
 				<h3 class="text-h4 text-center" v-text="$lang('home.products.title')">Our Products</h3>
 				<div class="line mx-auto mb-12" style="width:50px"></div>
 				<v-row class="mb-16">
-					<v-col cols="6" class="pa-8">
+					<v-col cols="6" class="pa-8" v-for="product in products.data" :key="product.id">
 						<v-hover>
 							<template v-slot:default="{ hover }">
 								<div style="position:relative">
-									<v-img src="/template/product-1.jpg" lazy-src="/template/placeholder.png" width="100%" />
-									<div class="bg text-center pa-4 pt-0">
-										<p class="text-h4 font-weight-light">Kirkland Minoxidil</p>
+									<v-img :src="product.images[0].url" lazy-src="/template/placeholder.png" width="100%" />
+									<div class="text-center pa-4 pt-0">
+										<p class="text-h4 font-weight-light" v-text="product.shortTitle"></p>
 										<p class="text-h5 font-weight-light error--text">
-											<span v-text="$currency(products[0].price)"></span>
+											<span v-text="$currency(product.price)"></span>
 											<span v-text="$cookies.get('cc')"></span>
 										</p>
 									</div>
 									<v-scroll-x-transition>
 										<v-overlay v-if="hover" color="primary" opacity="0.3" absolute>
-											<v-btn :to="`/products/${products[0].id}`" color="primary" fab><v-icon>mdi-eye</v-icon></v-btn>
+											<v-btn :to="`/products/${product.id}`" color="primary" fab><v-icon>mdi-eye</v-icon></v-btn>
 										</v-overlay>
 									</v-scroll-x-transition>
-								</div>
-							</template>
-						</v-hover>
-					</v-col>
-					<v-col cols="6" class="pa-8">
-						<v-hover>
-							<template v-slot:default="{ hover }">
-								<div style="position:relative">
-									<v-img src="/template/product-2.jpg" lazy-src="/template/placeholder.png" width="100%" />
-									<div class="bg text-center pa-4 pt-0">
-										<p class="text-h4 font-weight-light">Minoxidil Viñas</p>
-										<p class="text-h5 font-weight-light error--text">
-											<span v-text="$currency(products[1].price)"></span>
-											<span v-text="$cookies.get('cc')"></span>
-										</p>
-									</div>
-									<v-scroll-x-reverse-transition>
-										<v-overlay v-if="hover" color="primary" opacity="0.3" absolute>
-											<v-btn :to="`/products/${products[1].id}`" color="primary" fab><v-icon>mdi-eye</v-icon></v-btn>
-										</v-overlay>
-									</v-scroll-x-reverse-transition>
 								</div>
 							</template>
 						</v-hover>
@@ -189,14 +168,14 @@
 			}
 		},
 		async asyncData ({$axios}) {
-			let products = await $axios.$get('/products')
+			let products = await $axios.$get('/home')
 			return {products}
 		},
 		data () {
 			return {
 				loading: false,
 				dialog: false,
-				products: [],
+				products: {},
 				errors: {},
 				form: {
 					email: null

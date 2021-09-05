@@ -1,5 +1,11 @@
 <template>
 	<header>
+		<v-alert v-model="verify" color="error" class="pa-0 mb-0" text tile>
+			<v-container>
+				<span class="mr-2">Verify your account now.</span>
+				<v-btn to="/verification" color="primary" small depressed>Resend link</v-btn>
+			</v-container>
+		</v-alert>
 		<v-app-bar color="white" height="42" tag="div" flat>
 			<v-container>
 				<div class="d-flex justify-end">
@@ -15,13 +21,13 @@
 								<v-list-item-avatar class="mr-2" size="20">
 									<v-img src="/template/fr.png" />
 								</v-list-item-avatar>
-								<v-list-item-title v-text="$lang('header.links.french')">French</v-list-item-title>
+								<v-list-item-title v-text="$lang('header.links.french')"></v-list-item-title>
 							</v-list-item>
 							<v-list-item link @click="language('en')">
 								<v-list-item-avatar class="mr-2" size="20">
 									<v-img src="/template/usa.png" />
 								</v-list-item-avatar>
-								<v-list-item-title v-text="$lang('header.links.english')">English</v-list-item-title>
+								<v-list-item-title v-text="$lang('header.links.english')"></v-list-item-title>
 							</v-list-item>
 						</v-list>
 					</v-menu>
@@ -73,7 +79,7 @@
 						</div>
 					</v-col>
 					<v-col cols="4" class="d-flex justify-end">
-						<div v-if="auth.loggedIn">
+						<div v-if="$cookies.get('ut')">
 							<v-btn to="/account/orders" color="primary" text nuxt>{{ $lang('header.links.orders') }}</v-btn>
 							<v-btn color="primary" :loading="loading" text @click="logout">{{ $lang('header.links.logout') }}</v-btn>
 						</div>
@@ -89,10 +95,11 @@
 </template>
 
 <script>
-	import { mapState } from 'vuex'
 	export default {
 		computed: {
-			...mapState(['auth'])
+			verify () {
+				return this.$cookies.get('uv') ? true : false
+			}
 		},
 		methods: {
 			logout () {
@@ -100,6 +107,8 @@
 				this.$axios.$post('/auth/logout')
 				.finally(() => {
 					this.$cookies.remove('ut')
+					this.$cookies.remove('uv')
+					this.$cookies.remove('u')
 					this.$router.go()
 				})
 			},

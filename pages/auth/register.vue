@@ -76,8 +76,15 @@
 						maxAge: response.expires,
 						path: '/'
 					})
-					this.$store.commit('auth/login', response.user)
-					this.$router.replace('/')
+					this.$cookies.set('u', response.user.email, {
+						maxAge: response.expires,
+						path: '/'
+					})
+					this.$cookies.set('uv', true, {
+						maxAge: response.expires,
+						path: '/'
+					})
+					this.$router.replace('/verification')
 				}).catch(error => {
 					this.loading = false
 					this.errors = error.response.data.errors

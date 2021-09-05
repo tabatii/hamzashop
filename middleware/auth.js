@@ -1,5 +1,5 @@
-export default function ({store, redirect}) {
-	if (store.state.auth.loggedIn === false) {
+export default function ({app, redirect}) {
+	if (!app.$cookies.get('ut')) {
 		redirect('/auth/login')
 	}
 }

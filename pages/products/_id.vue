@@ -8,24 +8,37 @@
 						<v-sheet outlined>
 							<v-carousel height="auto" hide-delimiters show-arrows-on-hover>
 								<v-carousel-item v-for="(img, i) in product.images" :key="i">
-										<v-img :src="img" lazy-src="/template/placeholder.png" />
+										<v-img :src="img.url" lazy-src="/template/placeholder.png" />
 								</v-carousel-item>
 							</v-carousel>
 						</v-sheet>
 					</v-col>
 					<v-col cols="6">
-						<h1 class="text-h4 text-capitalize mb-4" v-text="product.title"></h1>
+						<h1 class="text-h4 text-capitalize mb-4" v-text="product.longTitle"></h1>
 						<div class="text-h3 font-weight-light error--text mb-8">
 							<span v-text="$currency(product.price)"></span>
 							<span v-text="$cookies.get('cc')"></span>
 						</div>
-						<div class="mb-8">
-							<v-btn :to="`/products/${products[0].id}`" class="mr-2" depressed>USA</v-btn>
-							<v-btn :to="`/products/${products[1].id}`" class="mr-2" depressed>Spain</v-btn>
-						</div>
-						<ul class="mb-16">
+						<ul class="mb-8">
 							<li class="text-capitalize" v-for="(feature, i) in product.features" :key="i" v-text="feature"></li>
 						</ul>
+						<div class="d-flex mb-16">
+							<v-sheet height="42px" class="mr-2" outlined rounded>
+								<img src="/template/cash.png" height="100%" />
+							</v-sheet>
+							<v-sheet height="42px" class="mr-2" outlined rounded>
+								<img src="/template/paypal.png" height="100%" />
+							</v-sheet>
+							<v-sheet height="42px" class="mr-2" outlined rounded>
+								<img src="/template/visa.png" height="100%" />
+							</v-sheet>
+							<v-sheet height="42px" class="mr-2" outlined rounded>
+								<img src="/template/mastercard.png" height="100%" />
+							</v-sheet>
+							<v-sheet height="42px" class="mr-2" outlined rounded>
+								<img src="/template/amex.png" height="100%" />
+							</v-sheet>
+						</div>
 						<div class="d-flex">
 							<v-sheet class="mr-2" width="130">
 								<v-text-field
@@ -76,12 +89,10 @@
 		},
 		async asyncData ({params, $axios}) {
 			let product = await $axios.$get(`/products/${params.id}`)
-			let products = await $axios.$get('/products')
-			return {product, products}
+			return {product: product.data}
 		},
 		data () {
 			return {
-				products: [],
 				product: {},
 				qty: 1
 			}

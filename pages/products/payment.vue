@@ -97,7 +97,10 @@
 		async asyncData ({app, $axios}) {
 			let product = await $axios.$get(`/products/${app.$cookies.get('p')}`)
 			let address = await $axios.$get(`/addresses/${app.$cookies.get('a')}`)
-			return {product, address}
+			return {
+				product: product.data,
+				address: address.data
+			}
 		},
 		data () {
 			return {

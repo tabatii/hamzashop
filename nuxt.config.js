@@ -11,7 +11,6 @@ export default {
 
   router: {
     middleware: [
-      'main',
       'currency',
     ],
   },
@@ -74,8 +73,10 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/axios.js',
+    '~/plugins/admin.js',
     '~/plugins/language.js',
     '~/plugins/currency.js',
+    '~/plugins/tiptap.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -92,6 +93,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/firebase',
     'vue-sweetalert2/nuxt',
     'cookie-universal-nuxt',
   ],
@@ -100,7 +102,26 @@ export default {
   axios: {
   },
 
+  firebase: {
+    config: {
+      apiKey: 'AIzaSyBiJM_1W_m06P7x9fykKNEIUKSMfw_vKsA',
+      authDomain: 'hamzashop-afb8f.firebaseapp.com',
+      projectId: 'hamzashop-afb8f',
+      storageBucket: 'hamzashop-afb8f.appspot.com',
+      messagingSenderId: '873529793056',
+      appId: '1:873529793056:web:f69698fcfa2151f11f3a45',
+      measurementId: 'G-DEXQSHEBP2',
+    },
+    services: {
+      storage: true,
+    }
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: [
+      'vuetify/lib',
+      'tiptap',
+    ]
   }
 }

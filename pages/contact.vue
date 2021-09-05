@@ -26,9 +26,9 @@
 							</v-col>
 						</v-row>
 						<v-textarea
-							v-model="form.message"
+							v-model="form.content"
 							:label="$lang('contact.form.message')"
-							:error-messages="errors.message"
+							:error-messages="errors.content"
 							outlined
 						/>
 						<v-btn color="primary" :loading="loading" block depressed x-large @click="send">{{ $lang('contact.form.submit') }}</v-btn>
@@ -47,7 +47,7 @@
 		methods: {
 			send () {
 				this.loading = true
-				this.$axios.$post('/contact', this.form)
+				this.$axios.$post('/messages', this.form)
 				.then(response => {
 					this.$router.push('/')
 				}).catch(error => {
@@ -63,7 +63,7 @@
 				form: {
 					name: null,
 					email: null,
-					message: null
+					content: null
 				}
 			}
 		}

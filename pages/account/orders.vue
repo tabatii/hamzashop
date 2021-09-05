@@ -4,9 +4,51 @@
 		<section class="mb-16">
 			<v-dialog v-model="dialog" max-width="700">
 				<v-card>
-					<v-card-title class="body-1 pa-4">
-						<span class="text--secondary">{{ $lang('orders.id') }} :</span>
-						<span class="ml-2" v-text="active.id"></span>
+					<v-card-title class="d-block body-1 px-0 py-4">
+						<v-row justify="center" no-gutters>
+							<v-col class="step">
+								<div class="step-line hidden"></div>
+								<v-avatar color="primary" size="36">
+									<v-icon dark>mdi-autorenew</v-icon>
+								</v-avatar>
+								<div class="step-line" :class="{disabled: active.status === 'pending'}"></div>
+							</v-col>
+							<v-col class="step" v-if="active.status !== 'cancelled'">
+								<div class="step-line" :class="{disabled: active.status === 'pending'}"></div>
+								<v-avatar :color="packing.includes(active.status) ? 'primary' : 'secondary lighten-5'" size="36">
+									<v-icon dark>mdi-package-variant</v-icon>
+								</v-avatar>
+								<div class="step-line" :class="{disabled: !shipped.includes(active.status)}"></div>
+							</v-col>
+							<v-col class="step" v-if="active.status !== 'cancelled'">
+								<div class="step-line" :class="{disabled: !shipped.includes(active.status)}"></div>
+								<v-avatar :color="shipped.includes(active.status) ? 'primary' : 'secondary lighten-5'" size="36">
+									<v-icon dark>mdi-airplane-takeoff</v-icon>
+								</v-avatar>
+								<div class="step-line" :class="{disabled: !arrived.includes(active.status)}"></div>
+							</v-col>
+							<v-col class="step" v-if="active.status !== 'cancelled'">
+								<div class="step-line" :class="{disabled: !arrived.includes(active.status)}"></div>
+								<v-avatar :color="arrived.includes(active.status) ? 'primary' : 'secondary lighten-5'" size="36">
+									<v-icon dark>mdi-airplane-landing</v-icon>
+								</v-avatar>
+								<div class="step-line" :class="{disabled: !received.includes(active.status)}"></div>
+							</v-col>
+							<v-col class="step" v-if="active.status !== 'cancelled'">
+								<div class="step-line" :class="{disabled: !received.includes(active.status)}"></div>
+								<v-avatar :color="received.includes(active.status) ? 'primary' : 'secondary lighten-5'" size="36">
+									<v-icon dark>mdi-check</v-icon>
+								</v-avatar>
+								<div class="step-line hidden"></div>
+							</v-col>
+							<v-col class="step" v-if="active.status === 'cancelled'">
+								<div class="step-line"></div>
+								<v-avatar color="primary" size="36">
+									<v-icon dark>mdi-close</v-icon>
+								</v-avatar>
+								<div class="step-line hidden"></div>
+							</v-col>
+						</v-row>
 					</v-card-title>
 					<v-divider></v-divider>
 					<v-card-text class="text--primary px-4 py-3">
@@ -24,6 +66,10 @@
 									<v-col cols="5" class="text--secondary">{{ $lang('orders.dialog.address.street') }} :</v-col>
 									<v-col cols="7" class="text-capitalize" v-text="active.address.street"></v-col>
 								</v-row>
+								<v-row no-gutters v-if="active.address.details">
+									<v-col cols="5" class="text--secondary">{{ $lang('orders.dialog.address.details') }} :</v-col>
+									<v-col cols="7" class="text-capitalize" v-text="active.address.details"></v-col>
+								</v-row>
 								<v-row no-gutters>
 									<v-col cols="5" class="text--secondary">{{ $lang('orders.dialog.address.city') }} :</v-col>
 									<v-col cols="7" class="text-capitalize" v-text="active.address.city"></v-col>
@@ -39,6 +85,10 @@
 							</v-col>
 							<v-divider vertical></v-divider>
 							<v-col cols="6">
+								<v-row no-gutters>
+									<v-col cols="5" class="text--secondary">{{ $lang('orders.id') }} :</v-col>
+									<v-col cols="7" class="text-capitalize" v-text="active.id"></v-col>
+								</v-row>
 								<v-row no-gutters>
 									<v-col cols="5" class="text--secondary">{{ $lang('orders.dialog.info.date') }} :</v-col>
 									<v-col cols="7" class="text-capitalize" v-text="active.created_at"></v-col>
@@ -68,7 +118,7 @@
 							<v-col cols="2" v-text="$lang('orders.table.operation')"></v-col>
 						</v-row>
 					</v-col>
-					<v-col cols="12" class="mb-6" v-for="(order, i) in orders" :key="order.id">
+					<v-col cols="12" class="mb-6" v-for="(order, i) in orders.data" :key="order.id">
 						<v-row class="bg">
 							<v-col cols="12" class="border-bottom">
 								<div class="d-flex">
@@ -84,10 +134,10 @@
 							<v-col cols="6">
 								<div class="d-flex">
 									<v-sheet height="72px" width="72px" outlined>
-										<v-img :src="order.product.images[0]" lazy-src="/template/placeholder.png" />
+										<v-img :src="order.product.image.url" lazy-src="/template/placeholder.png" />
 									</v-sheet>
 									<div class="ml-4">
-										<p class="text-capitalize mb-0" v-text="order.product.title"></p>
+										<p class="text-capitalize mb-0" v-text="order.product.longTitle"></p>
 										<div class="body-2">
 											<span v-text="$currency(order.unit_price)"></span>
 											<span v-text="$cookies.get('cc')"></span>
@@ -132,6 +182,18 @@
 			title: 'My orders'
 		},
 		computed: {
+			packing () {
+				return ['packing', 'shipped', 'arrived', 'received']
+			},
+			shipped () {
+				return ['shipped', 'arrived', 'received']
+			},
+			arrived () {
+				return ['arrived', 'received']
+			},
+			received () {
+				return ['received']
+			},
 			confirm () {
 				return {
 					icon: 'warning',
@@ -144,14 +206,14 @@
 			}
 		},
 		methods: {
-			details (index) {
-				this.active = this.orders[index]
+			details (i) {
+				this.active = this.orders.data[i]
 				this.dialog = true
 			},
 			cancel (id) {
 				this.$swal(this.confirm).then(result => {
 					if (result.isConfirmed) {
-						this.$axios.$delete(`/orders/${id}`)
+						this.$axios.$patch(`/orders/cancel/${id}`)
 						.then(response => {
 							this.$nuxt.refresh()
 						}).catch(error => {
@@ -165,20 +227,37 @@
 			}
 		},
 		async asyncData ({$axios}) {
-			let orders = await $axios.$get('/orders')
+			let orders = await $axios.$get('/orders/1')
 			return {orders}
 		},
 		data () {
 			return {
+				step: 1,
 				dialog: false,
 				active: {},
-				orders: []
+				orders: {}
 			}
 		}
 	}
 </script>
 
 <style scoped>
+	.step {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.step-line {
+		height: 0;
+		width: 100%;
+		border-bottom: 2px solid var(--v-primary-base);
+	}
+	.step-line.disabled {
+		border-bottom-color: var(--v-secondary-lighten5);
+	}
+	.step-line.hidden {
+		border-bottom-color: transparent;
+	}
 	.border-bottom {
 		border-bottom: 1px solid rgba(0, 0, 0, .12);
 	}
