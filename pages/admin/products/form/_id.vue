@@ -1,7 +1,7 @@
 <template>
 	<div class="pa-12">
 		<v-row>
-			<v-col cols="9">
+			<v-col cols="8">
 				<v-row class="ma-0">
 					<v-col cols="8">
 						<v-text-field
@@ -67,7 +67,7 @@
 					</v-col>
 				</v-row>
 			</v-col>
-			<v-col cols="3">
+			<v-col cols="4">
 				<v-row class="ma-0">
 					<v-col cols="12">
 						<v-card>
