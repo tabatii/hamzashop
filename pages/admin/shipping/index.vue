@@ -26,9 +26,11 @@
 										</td>
 										<td>
 											<span v-text="rate.min"></span>
+											<span>Day(s)</span>
 										</td>
 										<td>
 											<span v-text="rate.max"></span>
+											<span>Day(s)</span>
 										</td>
 										<td>
 											<v-btn color="error" x-small fab depressed @click="del(rate.id)">
