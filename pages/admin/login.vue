@@ -59,8 +59,8 @@
 				show: false,
 				errors: {},
 				form: {
-					email: 'admin@admin.com',
-					password: 'evxkuythjbsdfycn'
+					email: null,
+					password: null
 				}
 			}
 		}
