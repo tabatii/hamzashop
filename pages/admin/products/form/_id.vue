@@ -1,9 +1,9 @@
 <template>
 	<div class="pa-12">
 		<v-row>
-			<v-col cols="8">
+			<v-col cols="9">
 				<v-row class="ma-0">
-					<v-col cols="8">
+					<v-col cols="12">
 						<v-text-field
 							label="Long title"
 							v-model="form.long"
@@ -11,11 +11,30 @@
 							solo
 						/>
 					</v-col>
-					<v-col cols="4">
+				</v-row>
+				<v-row class="ma-0">
+					<v-col cols="6">
 						<v-text-field
 							label="Short title"
 							v-model="form.short"
 							:error-messages="errors.short"
+							solo
+						/>
+					</v-col>
+					<v-col cols="3">
+						<v-text-field
+							label="Price"
+							v-model="form.price"
+							:error-messages="errors.price"
+							suffix="DH"
+							solo
+						/>
+					</v-col>
+					<v-col cols="3">
+						<v-text-field
+							label="Stock"
+							v-model="form.stock"
+							:error-messages="errors.stock"
 							solo
 						/>
 					</v-col>
@@ -67,7 +86,7 @@
 					</v-col>
 				</v-row>
 			</v-col>
-			<v-col cols="4">
+			<v-col cols="3">
 				<v-row class="ma-0">
 					<v-col cols="12">
 						<v-card>
@@ -83,51 +102,6 @@
 							<v-card-actions class="px-4">
 								<v-btn color="primary" :loading="loading" block depressed @click="publish">Publish</v-btn>
 							</v-card-actions>
-						</v-card>
-					</v-col>
-				</v-row>
-				<v-row class="ma-0">
-					<v-col cols="12">
-						<v-card>
-							<v-card-title class="py-2">Price & Stock</v-card-title>
-							<v-divider></v-divider>
-							<v-card-text>
-								<v-text-field
-									label="Price"
-									v-model="form.price"
-									:error-messages="errors.price"
-									suffix="DH"
-									solo
-								/>
-								<v-text-field
-									label="Stock"
-									v-model="form.stock"
-									:error-messages="errors.stock"
-									solo
-								/>
-							</v-card-text>
-						</v-card>
-					</v-col>
-				</v-row>
-				<v-row class="ma-0">
-					<v-col cols="12">
-						<v-card>
-							<v-card-title class="d-flex align-center py-2">
-								<span class="mr-auto">Features</span>
-								<v-btn color="secondary" small depressed @click="newLine">Add</v-btn>
-							</v-card-title>
-							<v-divider></v-divider>
-							<v-card-text>
-								<v-text-field
-									label="Feature"
-									v-model="form.features[i]"
-									v-for="(f, i) in form.features" :key="i"
-									:error-messages="errors[`features.${i}`]"
-									@click:append="deleteLine(i)"
-									append-icon="mdi-close"
-									solo
-								/>
-							</v-card-text>
 						</v-card>
 					</v-col>
 				</v-row>
@@ -168,14 +142,6 @@
 					this.errors = error.response.data.errors
 				})
 			},
-			newLine () {
-				this.form.features.push(null)
-			},
-			deleteLine (i) {
-				if (this.form.features.length > 3) {
-					this.form.features.splice(i, 1)
-				}
-			},
 			upload (event) {
 				event.target.files.forEach(img => {
 					var count = this.form.images.length
@@ -214,7 +180,6 @@
 					short: null,
 					price: null,
 					stock: null,
-					features: [null,null,null],
 					images: [],
 					description: null,
 					status: 'public'
@@ -229,7 +194,6 @@
 					this.form.short = response.data.shortTitle
 					this.form.price = response.data.price
 					this.form.stock = response.data.stock
-					this.form.features = response.data.features
 					this.form.images = response.data.images
 					this.form.description = response.data.description
 					this.form.status = response.data.status

@@ -45,9 +45,7 @@
 									<v-radio value="cash" v-if="address.country === 'Morocco'">
 										<template v-slot:label>
 											<div class="d-flex">
-												<v-sheet height="42px" outlined rounded>
-													<img src="/template/cash.png" height="100%" />
-												</v-sheet>
+												<p class="text--primary mb-0">Pay on delivery</p>
 											</div>
 										</template>
 									</v-radio>
@@ -57,7 +55,7 @@
 					</v-col>
 					<v-divider vertical inset></v-divider>
 					<v-col class="pl-12" cols="5">
-						<product-bill :product="product"></product-bill>
+						<product-bill :product="product" :shipping="shipping.price"></product-bill>
 						<div v-if="method === 'card'">
 							<card-btn></card-btn>
 						</div>
@@ -95,19 +93,22 @@
 			}
 		},
 		async asyncData ({app, $axios}) {
-			let product = await $axios.$get(`/products/${app.$cookies.get('p')}`)
+			let shipping = await $axios.$get(`/shipping/${app.$cookies.get('s')}`)
 			let address = await $axios.$get(`/addresses/${app.$cookies.get('a')}`)
+			let product = await $axios.$get(`/products/${app.$cookies.get('p')}`)
 			return {
-				product: product.data,
-				address: address.data
+				shipping: shipping.data,
+				address: address.data,
+				product: product.data
 			}
 		},
 		data () {
 			return {
 				loading: false,
 				method: 'card',
-				product: {},
-				address: {}
+				shipping: {},
+				address: {},
+				product: {}
 			}
 		}
 	}

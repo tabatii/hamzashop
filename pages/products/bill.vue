@@ -28,7 +28,9 @@
 								v-model="form.country"
 								:label="$lang('address.form.country')"
 								:error-messages="errors.country"
-								:items="countries"
+								item-value="region"
+								item-text="region"
+								:items="rates"
 								outlined
 							/>
 							<v-row dense>
@@ -59,7 +61,7 @@
 					</v-col>
 					<v-divider vertical inset></v-divider>
 					<v-col class="pl-12" cols="5">
-						<product-bill :product="product"></product-bill>
+						<product-bill :product="product" :shipping="shipping.price"></product-bill>
 						<v-btn color="primary" :loading="loading" block depressed x-large @click="next">
 							{{ $lang('address.form.submit') }}
 						</v-btn>
@@ -71,15 +73,15 @@
 </template>
 
 <script>
-	import { getNames } from 'country-list'
 	export default {
 		middleware: 'auth',
 		head: {
 			title: 'Your bill'
 		},
-		computed: {
-			countries () {
-				return getNames().sort()
+		watch: {
+			'form.country' (newValue) {
+				this.shipping = this.rates.find(rate => rate.region === newValue)
+				this.$cookies.set('s', this.shipping.id, { path: '/' })
 			}
 		},
 		methods: {
@@ -97,23 +99,34 @@
 		},
 		async asyncData ({app, $axios}) {
 			let product = await $axios.$get(`/products/${app.$cookies.get('p')}`)
-			return {product: product.data}
+			let rates = await $axios.$get('/shipping')
+			return {
+				product: product.data,
+				rates: rates.data
+			}
 		},
 		data () {
 			return {
 				loading: false,
+				shipping: {},
 				product: {},
 				errors: {},
+				rates: {},
 				form: {
 					name: null,
 					street: null,
 					details: null,
-					country: 'Morocco',
+					country: null,
 					city: null,
 					zip: null,
 					mobile: null
 				}
 			}
+		},
+		created () {
+			let result = this.rates.find(rate => rate.id === this.$cookies.get('s'))
+			this.form.country = result.region
+			this.shipping = result
 		}
 	}
 </script>

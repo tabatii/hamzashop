@@ -101,6 +101,14 @@ module.exports = {
 		}
 	},
 	product: {
+		ship: 'Envoyez à',
+		buy: 'Acheter',
+		shipping: {
+			country: 'Envoyez à',
+			cost: 'Frais de port',
+			time: 'Temps d\'expédition',
+			days: 'Jours ouvrables',
+		},
 		description: {
 			title: 'Description du produit',
 		}

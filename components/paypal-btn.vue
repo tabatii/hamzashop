@@ -26,6 +26,7 @@
 							headers: this.headers,
 							body: JSON.stringify({
 								product: this.$cookies.get('p'),
+								address: this.$cookies.get('a'),
 								quantity: this.$cookies.get('q')
 							})
 						}).then(response => {

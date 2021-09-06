@@ -53,7 +53,8 @@
 <script>
 	export default {
 		props: {
-			product: Object
+			product: Object,
+			shipping: Number
 		},
 		computed: {
 			total () {
@@ -63,11 +64,6 @@
 			subtotal () {
 				let result = this.product.price * this.$cookies.get('q')
 				return this.$currency(result)
-			}
-		},
-		data () {
-			return {
-				shipping: 50
 			}
 		}
 	}
