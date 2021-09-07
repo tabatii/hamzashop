@@ -96,8 +96,10 @@
 
 <script>
 	export default {
-		head: {
-			title: 'Product'
+		head () {
+			return {
+				title: this.product.shortTitle
+			}
 		},
 		watch: {
 			country (newValue) {

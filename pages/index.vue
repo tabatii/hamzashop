@@ -21,14 +21,14 @@
 				<h3 class="text-h4 text-center" v-text="$lang('home.products.title')">Our Products</h3>
 				<div class="line mx-auto mb-12" style="width:50px"></div>
 				<v-row class="mb-16">
-					<v-col cols="6" class="pa-8" v-for="product in products.data" :key="product.id">
+					<v-col cols="4" class="pa-8" v-for="product in products.data" :key="product.id">
 						<v-hover>
 							<template v-slot:default="{ hover }">
 								<div style="position:relative">
 									<v-img :src="product.images[0].url" lazy-src="/template/placeholder.png" width="100%" />
 									<div class="text-center pa-4 pt-0">
-										<p class="text-h4 font-weight-light" v-text="product.shortTitle"></p>
-										<p class="text-h5 font-weight-light error--text">
+										<p class="text-h5 font-weight-light" v-text="product.shortTitle"></p>
+										<p class="text-h6 font-weight-light error--text">
 											<span v-text="$currency(product.price)"></span>
 											<span v-text="$cookies.get('cc')"></span>
 										</p>
