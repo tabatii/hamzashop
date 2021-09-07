@@ -13,14 +13,14 @@
 									<template v-slot:default>
 										<thead>
 											<tr>
-												<th class="text-left">Region</th>
+												<th class="text-left">Country</th>
 												<th class="text-left">Price</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr v-for="rate in rates.data" :key="rate.id">
 												<td>
-													<span class="text-capitalize" v-text="rate.region"></span>
+													<span class="text-capitalize" v-text="rate.country"></span>
 												</td>
 												<td>
 													<span v-text="$currency(rate.price)"></span>

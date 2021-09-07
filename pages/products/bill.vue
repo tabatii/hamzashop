@@ -28,8 +28,8 @@
 								v-model="form.country"
 								:label="$lang('address.form.country')"
 								:error-messages="errors.country"
-								item-value="region"
-								item-text="region"
+								item-value="country"
+								item-text="country"
 								:items="rates"
 								outlined
 							/>
@@ -80,7 +80,7 @@
 		},
 		watch: {
 			'form.country' (newValue) {
-				this.shipping = this.rates.find(rate => rate.region === newValue)
+				this.shipping = this.rates.find(rate => rate.country === newValue)
 				this.$cookies.set('s', this.shipping.id, { path: '/' })
 			}
 		},
@@ -125,7 +125,7 @@
 		},
 		created () {
 			let result = this.rates.find(rate => rate.id === this.$cookies.get('s'))
-			this.form.country = result.region
+			this.form.country = result.country
 			this.shipping = result
 		}
 	}

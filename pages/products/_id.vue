@@ -6,7 +6,7 @@
 				<v-card>
 					<v-card-text class="text--primary px-4 py-0" style="height:350px">
 						<v-radio-group v-model="country">
-							<v-radio :label="rate.region" :value="rate.region" v-for="(rate, i) in rates" :key="i"></v-radio>
+							<v-radio :label="rate.country" :value="rate.country" v-for="(rate, i) in rates" :key="i"></v-radio>
 						</v-radio-group>
 					</v-card-text>
 					<v-divider></v-divider>
@@ -40,7 +40,7 @@
 									<p class="mb-0">{{ $lang('product.shipping.time') }} :</p>
 								</v-col>
 								<v-col cols="8" v-if="Object.keys(active).length">
-									<p class="mb-0">{{ active.region }}</p>
+									<p class="mb-0">{{ active.country }}</p>
 									<p class="mb-0">{{ $currency(active.price) }} {{ $cookies.get('cc') }}</p>
 									<p class="mb-0">{{ active.min }}-{{ active.max }} ({{ $lang('product.shipping.days') }})</p>
 								</v-col>
@@ -101,7 +101,7 @@
 		},
 		watch: {
 			country (newValue) {
-				this.active = this.rates.find(rate => rate.region === newValue)
+				this.active = this.rates.find(rate => rate.country === newValue)
 				this.dialog = false
 			}
 		},
@@ -140,7 +140,7 @@
 			}
 		},
 		created () {
-			this.active = this.rates.find(rate => rate.region === this.country) || {}
+			this.active = this.rates.find(rate => rate.country === this.country) || {}
 		}
 	}
 </script>

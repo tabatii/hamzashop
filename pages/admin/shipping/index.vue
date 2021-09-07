@@ -8,7 +8,7 @@
 							<template v-slot:default>
 								<thead>
 									<tr>
-										<th class="text-left">Region</th>
+										<th class="text-left">Country</th>
 										<th class="text-left">Price</th>
 										<th class="text-left">Min time</th>
 										<th class="text-left">Max time</th>
@@ -18,7 +18,7 @@
 								<tbody>
 									<tr v-for="(rate, i) in rates.data" :key="rate.id">
 										<td>
-											<span class="text-capitalize" v-text="rate.region"></span>
+											<span class="text-capitalize" v-text="rate.country"></span>
 										</td>
 										<td>
 											<span v-text="rate.price"></span>
@@ -43,8 +43,8 @@
 											<v-sheet outlined rounded>
 												<v-select
 													:items="countries"
-													v-model="form.region"
-													:error-messages="errors.region"
+													v-model="form.country"
+													:error-messages="errors.country"
 													dense solo flat hide-details
 												/>
 											</v-sheet>
@@ -144,7 +144,7 @@
 				})
 			},
 			reset () {
-				this.form.region = null
+				this.form.country = null
 				this.form.price = null
 				this.form.min = null
 				this.form.max = null
@@ -160,7 +160,7 @@
 				errors: {},
 				rates: {},
 				form: {
-					region: null,
+					country: null,
 					price: null,
 					min: null,
 					max: null
