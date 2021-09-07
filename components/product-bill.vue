@@ -58,7 +58,7 @@
 		},
 		computed: {
 			total () {
-				let result = (this.product.price * this.$cookies.get('q')) + this.shipping
+				let result = (this.product.price * this.$cookies.get('q')) + parseFloat(this.shipping)
 				return this.$currency(result)
 			},
 			subtotal () {
