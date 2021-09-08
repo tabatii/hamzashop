@@ -1,7 +1,7 @@
 <template>
 	<v-container class="py-0">
 		<v-row justify="center" no-gutters>
-			<v-col cols="6">
+			<v-col lg="8" xl="6">
 				<v-sheet class="d-flex flex-column justify-center" min-height="100vh">
 					<div class="pa-16">
 						<v-text-field

@@ -64,21 +64,62 @@
 		</v-app-bar>
 		<v-divider style="border-color:var(--v-background-base)"></v-divider>
 		<v-app-bar color="white" height="75" tag="div" flat>
-			<v-container>
+			<v-container class="d-lg-none">
 				<v-row no-gutters>
-					<v-col cols="3">
+					<v-col lg="6">
 						<v-toolbar-title>
 							<app-logo />
 						</v-toolbar-title>
 					</v-col>
-					<v-col cols="5">
-						<div>
+					<v-col lg="6" class="d-flex justify-end">
+						<v-menu transition="scroll-y-transition" offset-y left>
+							<template v-slot:activator="{ on, attrs }">
+								<v-btn class="px-3" min-width="36" depressed v-bind="attrs" v-on="on">
+									<v-icon>mdi-menu</v-icon>
+								</v-btn>
+							</template>
+							<v-list min-width="200">
+								<v-list-item to="/" nuxt>
+									<v-list-item-title v-text="$lang('header.links.home')"></v-list-item-title>
+								</v-list-item>
+								<v-list-item to="/contact" nuxt>
+									<v-list-item-title v-text="$lang('header.links.contact')"></v-list-item-title>
+								</v-list-item>
+								<v-list-item :href="$config.blog" target="_blank" nuxt>
+									<v-list-item-title v-text="$lang('header.links.blog')"></v-list-item-title>
+								</v-list-item>
+								<v-list-item to="/auth/login" nuxt v-if="!$cookies.get('ut')">
+									<v-list-item-title v-text="$lang('header.links.login')"></v-list-item-title>
+								</v-list-item>
+								<v-list-item to="/auth/register" nuxt v-if="!$cookies.get('ut')">
+									<v-list-item-title v-text="$lang('header.links.register')"></v-list-item-title>
+								</v-list-item>
+								<v-list-item to="/account/orders" nuxt v-if="$cookies.get('ut')">
+									<v-list-item-title v-text="$lang('header.links.orders')"></v-list-item-title>
+								</v-list-item>
+								<v-list-item @click="logout" v-if="$cookies.get('ut')">
+									<v-list-item-title v-text="$lang('header.links.logout')"></v-list-item-title>
+								</v-list-item>
+							</v-list>
+						</v-menu>
+					</v-col>
+				</v-row>
+			</v-container>
+			<v-container class="d-none d-lg-block">
+				<v-row no-gutters>
+					<v-col lg="3">
+						<v-toolbar-title>
+							<app-logo />
+						</v-toolbar-title>
+					</v-col>
+					<v-col lg="4">
+						<div class="px-2">
 							<v-btn to="/" color="primary" text nuxt>{{ $lang('header.links.home') }}</v-btn>
 							<v-btn to="/contact" color="primary" text nuxt>{{ $lang('header.links.contact') }}</v-btn>
 							<v-btn :href="$config.blog" color="primary" target="_blank" text>{{ $lang('header.links.blog') }}</v-btn>
 						</div>
 					</v-col>
-					<v-col cols="4" class="d-flex justify-end">
+					<v-col lg="5" class="d-flex justify-end">
 						<div v-if="$cookies.get('ut')">
 							<v-btn to="/account/orders" color="primary" text nuxt>{{ $lang('header.links.orders') }}</v-btn>
 							<v-btn color="primary" :loading="loading" text @click="logout">{{ $lang('header.links.logout') }}</v-btn>

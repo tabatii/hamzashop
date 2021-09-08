@@ -2,6 +2,11 @@ section {
 	padding: 75px 0;
 }
 
+th,
+td {
+	white-space: nowrap;
+}
+
 .bg {
 	background-color: var(--v-background-base);
 }

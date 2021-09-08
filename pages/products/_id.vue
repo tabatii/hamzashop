@@ -17,7 +17,7 @@
 			</v-dialog>
 			<v-container>
 				<v-row>
-					<v-col cols="6">
+					<v-col lg="6">
 						<v-sheet outlined>
 							<v-carousel height="auto" hide-delimiters show-arrows-on-hover>
 								<v-carousel-item v-for="(img, i) in product.images" :key="i">
@@ -26,7 +26,7 @@
 							</v-carousel>
 						</v-sheet>
 					</v-col>
-					<v-col cols="6">
+					<v-col lg="6">
 						<h1 class="text-h4 text-capitalize mb-4" v-text="product.longTitle"></h1>
 						<div class="text-h3 font-weight-light error--text mb-8">
 							<span v-text="$currency(product.price)"></span>

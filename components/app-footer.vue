@@ -3,7 +3,7 @@
 		<v-container class="py-0">
 			<section>
 				<v-row>
-					<v-col cols="3">
+					<v-col sm="12" lg="3" class="order-1">
 						<p class="body-1 mb-5" v-text="$lang('footer.about.title')"></p>
 						<p class="font-weight-thin" v-text="$lang('footer.about.text')"></p>
 						<!--<div>
@@ -18,7 +18,7 @@
 							</v-btn>
 						</div>-->
 					</v-col>
-					<v-col cols="3">
+					<v-col sm="6" lg="3" class="order-sm-3">
 						<p class="body-1 px-3" v-text="$lang('footer.links.website.title')"></p>
 						<div>
 							<v-btn to="/links/terms-conditions" plain small>{{ $lang('footer.links.website.terms') }}</v-btn>
@@ -30,7 +30,7 @@
 							<v-btn to="/links/shipping-rates" plain small>{{ $lang('footer.links.website.shipping') }}</v-btn>
 						</div>
 					</v-col>
-					<v-col cols="2">
+					<v-col sm="6" lg="2" class="order-sm-4">
 						<p class="body-1 px-3" v-text="$lang('footer.links.quick.title')"></p>
 						<div>
 							<v-btn to="/contact" plain small>{{ $lang('footer.links.quick.contact') }}</v-btn>
@@ -48,7 +48,7 @@
 							<v-btn to="/auth/register" plain small>{{ $lang('footer.links.quick.register') }}</v-btn>
 						</div>
 					</v-col>
-					<v-col cols="4">
+					<v-col sm="12" lg="4" class="order-sm-2 order-lg-4">
 						<div class="d-flex align-center mb-4">
 							<v-avatar color="secondary" size="48">
 								<v-icon>mdi-map-marker</v-icon>

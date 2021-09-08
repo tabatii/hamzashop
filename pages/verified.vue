@@ -1,7 +1,7 @@
 <template>
 	<v-container class="py-16">
 		<v-row justify="center">
-			<v-col cols="5">
+			<v-col sm="8" lg="5">
 				<v-card>
 					<v-card-title class="justify-center">Account verified</v-card-title>
 					<v-divider></v-divider>

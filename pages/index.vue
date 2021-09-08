@@ -3,11 +3,11 @@
 		<section class="intro bg pa-0">
 			<v-container>
 				<div class="d-flex justify-end">
-					<img src="/template/header.png" />
+					<img src="/template/header.png" :height="height" />
 				</div>
 				<div class="intro-text">
-					<h3 class="text-h2 mb-4" v-text="$lang('home.intro.title')"></h3>
-					<p class="text-h5 font-weight-light px-1 mb-6" v-text="$lang('home.intro.text')"></p>
+					<h3 class="text-h4 text-lg-h2 mb-4" v-text="$lang('home.intro.title')"></h3>
+					<p class="text-h6 text-lg-h5 font-weight-light px-1 mb-6" v-text="$lang('home.intro.text')"></p>
 					<div v-if="products.data.length">
 						<v-btn :to="`/products/${products.data[0].id}`" class="mx-1" color="primary" rounded depressed x-large nuxt>
 							{{ $lang('home.intro.btn') }}
@@ -19,9 +19,9 @@
 		<section>
 			<v-container>
 				<h3 class="text-h4 text-center" v-text="$lang('home.products.title')">Our Products</h3>
-				<div class="line mx-auto mb-12" style="width:50px"></div>
+				<div class="line mx-auto mb-6" style="width:50px"></div>
 				<v-row class="mb-16">
-					<v-col cols="4" class="pa-8" v-for="product in products.data" :key="product.id">
+					<v-col lg="4" class="pa-8" v-for="product in products.data" :key="product.id">
 						<v-hover>
 							<template v-slot:default="{ hover }">
 								<div style="position:relative">
@@ -47,13 +47,13 @@
 		</section>
 		<div class="bg">
 			<v-row no-gutters>
-				<v-col cols="6">
+				<v-col lg="6">
 					<div class="video-player">
 						<v-img src="/template/main-1.png" width="100%" />
 						<v-icon class="play-icon" color="white" size="92">mdi-play-circle-outline</v-icon>
 					</div>
 				</v-col>
-				<v-col cols="6" class="d-flex align-center pa-16">
+				<v-col lg="6" class="d-flex align-center px-16 py-16 py-lg-0">
 					<div style="max-width:60%">
 						<h3 class="text-h4" v-text="$lang('home.video.title')"></h3>
 						<div class="line mb-6" style="width:50px"></div>
@@ -73,7 +73,10 @@
 		<section>
 			<v-container class="py-16">
 				<v-row>
-					<v-col cols="6" class="d-flex align-center pa-8">
+					<v-col sm="12" lg="6" class="order-lg-2 pa-xl-8">
+						<v-img src="/template/main-2.jpg" lazy-src="/template/placeholder.png" aspect-ratio="4/3" width="100%" />
+					</v-col>
+					<v-col sm="12" lg="6" class="d-flex align-center order-lg-1 pa-xl-8">
 						<div>
 							<h3 class="text-h4" v-text="$lang('home.steps.title')"></h3>
 							<div class="line mb-8" style="width:50px"></div>
@@ -105,9 +108,6 @@
 							</div>
 						</div>
 					</v-col>
-					<v-col cols="6" class="pa-8">
-						<v-img src="/template/main-2.jpg" lazy-src="/template/placeholder.png" aspect-ratio="4/3" width="100%" />
-					</v-col>
 				</v-row>
 			</v-container>
 		</section>
@@ -116,7 +116,7 @@
 				<h3 class="text-h4 text-center" v-text="$lang('home.newsletter.title')"></h3>
 				<div class="line mx-auto mb-12" style="width:50px"></div>
 				<v-row justify="center">
-					<v-col cols="6">
+					<v-col lg="6">
 						<div class="d-flex">
 							<v-text-field
 								class="mr-2"
@@ -140,6 +140,16 @@
 	export default {
 		head: {
 			title: 'Home'
+		},
+		computed: {
+			height () {
+				if (this.$vuetify.breakpoint.smAndDown) {
+					return '350px'
+				} else if (this.$vuetify.breakpoint.mdAndDown) {
+					return '450px'
+				}
+				return '550px'
+			}
 		},
 		watch: {
 			dialog (newValue, oldValue) {
@@ -189,9 +199,6 @@
 	.intro .container {
 		position: relative;
 		padding-bottom: 0;
-	}
-	.intro img {
-		height: 550px;
 	}
 	.intro-text {
 		position: absolute;

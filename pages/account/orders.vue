@@ -133,10 +133,10 @@
 						<v-row class="bg">
 							<v-col cols="6">
 								<div class="d-flex">
-									<v-sheet height="72px" width="72px" outlined>
+									<v-sheet class="d-none d-sm-block mr-4" height="72px" width="72px" outlined>
 										<v-img :src="order.product.image.url" lazy-src="/template/placeholder.png" />
 									</v-sheet>
-									<div class="ml-4">
+									<div>
 										<p class="text-capitalize mb-0" v-text="order.product.longTitle"></p>
 										<div class="body-2">
 											<span v-text="$currency(order.unit_price)"></span>

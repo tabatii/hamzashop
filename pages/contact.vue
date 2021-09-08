@@ -6,7 +6,7 @@
 				<h3 class="text-h4 text-center" v-text="$lang('contact.title')"></h3>
 				<div class="line mx-auto mb-12" style="width:40px"></div>
 				<v-row justify="center">
-					<v-col cols="8">
+					<v-col md="8">
 						<v-row>
 							<v-col cols="6">
 								<v-text-field
