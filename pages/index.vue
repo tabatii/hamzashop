@@ -19,8 +19,8 @@
 		<section>
 			<v-container>
 				<h3 class="text-h4 text-center" v-text="$lang('home.products.title')">Our Products</h3>
-				<div class="line mx-auto mb-6" style="width:50px"></div>
-				<v-row class="mb-16">
+				<div class="line mx-auto mb-8" style="width:50px"></div>
+				<v-row class="mb-8">
 					<v-col lg="4" class="pa-8" v-for="product in products.data" :key="product.id">
 						<v-hover>
 							<template v-slot:default="{ hover }">
