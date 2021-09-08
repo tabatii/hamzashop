@@ -7,8 +7,8 @@
 				<div class="line mx-auto mb-12" style="width:40px"></div>
 				<v-row justify="center">
 					<v-col md="8">
-						<v-row>
-							<v-col cols="6">
+						<v-row no-gutters>
+							<v-col cols="12" sm="6" class="pr-0 pr-sm-3">
 								<v-text-field
 									v-model="form.name"
 									:label="$lang('contact.form.name')"
@@ -16,7 +16,7 @@
 									outlined autofocus
 								/>
 							</v-col>
-							<v-col cols="6">
+							<v-col cols="12" sm="6" class="pl-0 pl-sm-3">
 								<v-text-field
 									v-model="form.email"
 									:label="$lang('contact.form.email')"
