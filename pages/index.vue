@@ -2,10 +2,10 @@
 	<div>
 		<section class="intro bg pa-0">
 			<v-container>
-				<div class="d-flex justify-end">
+				<div class="d-flex justify-center justify-sm-end">
 					<img src="/template/header.png" :height="height" />
 				</div>
-				<div class="intro-text">
+				<div class="intro-text d-sm-flex">
 					<h3 class="text-h5 text-sm-h4 text-lg-h2 mb-4" v-text="$lang('home.intro.title')"></h3>
 					<p class="body-1 text-sm-h6 text-lg-h5 font-weight-light px-1 mb-6" v-text="$lang('home.intro.text')"></p>
 					<div v-if="products.data.length">
@@ -206,7 +206,7 @@
 		position: absolute;
 		top: 0;
 		bottom: 0;
-		display: flex;
+		display: none;
 		flex-direction: column;
 		justify-content: center;
 		max-width: 60%;
