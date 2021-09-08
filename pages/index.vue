@@ -33,11 +33,11 @@
 											<span v-text="$cookies.get('cc')"></span>
 										</p>
 									</div>
-									<v-scroll-x-transition>
+									<v-scroll-y-transition>
 										<v-overlay v-if="hover" color="primary" opacity="0.3" absolute>
 											<v-btn :to="`/products/${product.id}`" color="primary" fab><v-icon>mdi-eye</v-icon></v-btn>
 										</v-overlay>
-									</v-scroll-x-transition>
+									</v-scroll-y-transition>
 								</div>
 							</template>
 						</v-hover>

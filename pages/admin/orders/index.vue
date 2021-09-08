@@ -51,7 +51,6 @@
 								<v-radio label="Shipped" value="shipped"></v-radio>
 								<v-radio label="Arrived" value="arrived"></v-radio>
 								<v-radio label="Received" value="received"></v-radio>
-								<v-radio label="Cancelled" value="cancelled"></v-radio>
 							</v-radio-group>
 						</v-card-text>
 						<v-divider></v-divider>
@@ -125,8 +124,11 @@
 											<v-btn color="info" x-small fab depressed @click="openAddress(i)">
 												<v-icon>mdi-map-marker</v-icon>
 											</v-btn>
-											<v-btn color="primary" x-small fab depressed @click="openStatus(i)">
+											<v-btn color="primary" x-small fab depressed v-if="order.status !== 'cancelled'" @click="openStatus(i)">
 												<v-icon>mdi-square-edit-outline</v-icon>
+											</v-btn>
+											<v-btn color="error" x-small fab depressed v-if="order.status !== 'cancelled'" @click="refuse(order.id)">
+												<v-icon>mdi-close</v-icon>
 											</v-btn>
 										</td>
 									</tr>
@@ -175,6 +177,23 @@
 					this.dialog.status = false
 					this.loading = false
 					this.$nuxt.refresh()
+				}).catch(error => {
+					this.dialog.status = false
+					this.loading = false
+					this.$swal({
+						text: error.response.data.message,
+						icon: 'error'
+					})
+				})
+			},
+			refuse (id) {
+				this.$swal(this.confirm).then(result => {
+					if (result.isConfirmed) {
+						this.$admin.$patch(`/orders/refuse/${id}`)
+						.then(response => {
+							this.$nuxt.refresh()
+						})
+					}
 				})
 			}
 		},
