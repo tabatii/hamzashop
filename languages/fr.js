@@ -44,7 +44,7 @@ module.exports = {
 		intro: {
 			title: 'Reprenez vos cheveux.',
 			text: 'La solution et la mousse de minoxidil sont utilisées pour favoriser la croissance des cheveux dans le traitement de la calvitie masculine.',
-			btn: 'Achetez maintenant',
+			btn: 'Achetez',
 		},
 		products: {
 			title: 'Nos Produits',

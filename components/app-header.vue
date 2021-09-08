@@ -9,7 +9,7 @@
 		<v-app-bar color="white" height="42" tag="div" flat>
 			<v-container>
 				<div class="d-flex justify-end">
-					<v-menu transition="scroll-y-transition" open-on-hover offset-y>
+					<v-menu transition="scroll-y-transition" offset-y>
 						<template v-slot:activator="{ on, attrs }">
 							<v-btn class="px-1" plain small v-bind="attrs" v-on="on">
 								<span class="pl-1" v-text="$lang('header.links.language')"></span>
@@ -31,7 +31,7 @@
 							</v-list-item>
 						</v-list>
 					</v-menu>
-					<v-menu transition="scroll-y-transition" open-on-hover offset-y>
+					<v-menu transition="scroll-y-transition" offset-y>
 						<template v-slot:activator="{ on, attrs }">
 							<v-btn class="px-1 ml-2" plain small v-bind="attrs" v-on="on">
 								<span class="pl-1" v-text="$lang('header.links.currency')"></span>

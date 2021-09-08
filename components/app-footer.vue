@@ -3,22 +3,11 @@
 		<v-container class="py-0">
 			<section>
 				<v-row>
-					<v-col sm="12" lg="3" class="order-1">
+					<v-col cols="12" lg="3" class="order-4 order-lg-1">
 						<p class="body-1 mb-5" v-text="$lang('footer.about.title')"></p>
 						<p class="font-weight-thin" v-text="$lang('footer.about.text')"></p>
-						<!--<div>
-							<v-btn href="https://www.facebook.com" target="_blank" icon>
-								<v-icon size="24px">mdi-facebook</v-icon>
-							</v-btn>
-							<v-btn href="https://www.twitter.com" target="_blank" icon>
-								<v-icon size="24px">mdi-twitter</v-icon>
-							</v-btn>
-							<v-btn href="https://www.instagram.com" target="_blank" icon>
-								<v-icon size="24px">mdi-instagram</v-icon>
-							</v-btn>
-						</div>-->
 					</v-col>
-					<v-col sm="6" lg="3" class="order-sm-3">
+					<v-col cols="6" lg="3" class="order-2">
 						<p class="body-1 px-3" v-text="$lang('footer.links.website.title')"></p>
 						<div>
 							<v-btn to="/links/terms-conditions" plain small>{{ $lang('footer.links.website.terms') }}</v-btn>
@@ -30,7 +19,7 @@
 							<v-btn to="/links/shipping-rates" plain small>{{ $lang('footer.links.website.shipping') }}</v-btn>
 						</div>
 					</v-col>
-					<v-col sm="6" lg="2" class="order-sm-4">
+					<v-col cols="6" lg="2" class="order-3">
 						<p class="body-1 px-3" v-text="$lang('footer.links.quick.title')"></p>
 						<div>
 							<v-btn to="/contact" plain small>{{ $lang('footer.links.quick.contact') }}</v-btn>
@@ -48,7 +37,7 @@
 							<v-btn to="/auth/register" plain small>{{ $lang('footer.links.quick.register') }}</v-btn>
 						</div>
 					</v-col>
-					<v-col sm="12" lg="4" class="order-sm-2 order-lg-4">
+					<v-col cols="12" lg="4" class="order-1 order-lg-4">
 						<div class="d-flex align-center mb-4">
 							<v-avatar color="secondary" size="48">
 								<v-icon>mdi-map-marker</v-icon>
@@ -61,7 +50,7 @@
 							</v-avatar>
 							<span class="font-weight-thin ml-4">hamzaelara@gmail.com</span>
 						</div>
-						<div class="d-flex align-center">
+						<div class="d-flex align-center mb-4">
 							<v-avatar color="secondary" size="48">
 								<v-icon>mdi-phone</v-icon>
 							</v-avatar>

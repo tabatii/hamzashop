@@ -6,8 +6,8 @@
 					<img src="/template/header.png" :height="height" />
 				</div>
 				<div class="intro-text">
-					<h3 class="text-h4 text-lg-h2 mb-4" v-text="$lang('home.intro.title')"></h3>
-					<p class="text-h6 text-lg-h5 font-weight-light px-1 mb-6" v-text="$lang('home.intro.text')"></p>
+					<h3 class="text-h5 text-sm-h4 text-lg-h2 mb-4" v-text="$lang('home.intro.title')"></h3>
+					<p class="body-1 text-sm-h6 text-lg-h5 font-weight-light px-1 mb-6" v-text="$lang('home.intro.text')"></p>
 					<div v-if="products.data.length">
 						<v-btn :to="`/products/${products.data[0].id}`" class="mx-1" color="primary" rounded depressed x-large nuxt>
 							{{ $lang('home.intro.btn') }}
@@ -18,10 +18,10 @@
 		</section>
 		<section>
 			<v-container>
-				<h3 class="text-h4 text-center" v-text="$lang('home.products.title')"></h3>
+				<h3 class="text-h5 text-sm-h4 text-center" v-text="$lang('home.products.title')"></h3>
 				<div class="line mx-auto mb-8" style="width:50px"></div>
 				<v-row class="mb-8">
-					<v-col lg="4" class="pa-8" v-for="product in products.data" :key="product.id">
+					<v-col cols="12" lg="4" v-for="product in products.data" :key="product.id">
 						<v-hover>
 							<template v-slot:default="{ hover }">
 								<div style="position:relative">
@@ -55,7 +55,7 @@
 				</v-col>
 				<v-col lg="6" class="d-flex align-center px-16 py-16 py-lg-0">
 					<div style="max-width:60%">
-						<h3 class="text-h4" v-text="$lang('home.video.title')"></h3>
+						<h3 class="text-h5 text-sm-h4" v-text="$lang('home.video.title')"></h3>
 						<div class="line mb-6" style="width:50px"></div>
 						<p v-text="$lang('home.video.text')"></p>
 						<v-dialog v-model="dialog" width="853">
@@ -73,12 +73,12 @@
 		<section>
 			<v-container class="py-16">
 				<v-row>
-					<v-col sm="12" lg="6" class="order-lg-2 pa-xl-8">
+					<v-col cols="12" lg="6" class="order-lg-2 pa-xl-8">
 						<v-img src="/template/main-2.jpg" lazy-src="/template/placeholder.png" aspect-ratio="4/3" width="100%" />
 					</v-col>
-					<v-col sm="12" lg="6" class="d-flex align-center order-lg-1 pa-xl-8">
+					<v-col cols="12" lg="6" class="d-flex align-center order-lg-1 pa-xl-8">
 						<div>
-							<h3 class="text-h4" v-text="$lang('home.steps.title')"></h3>
+							<h3 class="text-h5 text-sm-h4" v-text="$lang('home.steps.title')"></h3>
 							<div class="line mb-8" style="width:50px"></div>
 							<div>
 								<div class="d-flex">
@@ -113,7 +113,7 @@
 		</section>
 		<section class="bg">
 			<v-container>
-				<h3 class="text-h4 text-center" v-text="$lang('home.newsletter.title')"></h3>
+				<h3 class="text-h5 text-sm-h4 text-center" v-text="$lang('home.newsletter.title')"></h3>
 				<div class="line mx-auto mb-12" style="width:50px"></div>
 				<v-row justify="center">
 					<v-col lg="6">
@@ -143,9 +143,11 @@
 		},
 		computed: {
 			height () {
-				if (this.$vuetify.breakpoint.smAndDown) {
+				if (this.$vuetify.breakpoint.name === 'sm') {
+					return '300px'
+				} else if (this.$vuetify.breakpoint.name === 'md') {
 					return '350px'
-				} else if (this.$vuetify.breakpoint.mdAndDown) {
+				} else if (this.$vuetify.breakpoint.name === 'lg') {
 					return '450px'
 				}
 				return '550px'
