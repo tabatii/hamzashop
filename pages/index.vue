@@ -53,8 +53,8 @@
 						<v-icon class="play-icon" color="white" size="92">mdi-play-circle-outline</v-icon>
 					</div>
 				</v-col>
-				<v-col lg="6" class="d-flex align-center px-16 py-16 py-lg-0">
-					<div style="max-width:60%">
+				<v-col lg="6" class="d-flex align-center justify-center justify-lg-start">
+					<div class="video-text px-3 px-lg-16 py-16 py-lg-0">
 						<h3 class="text-h5 text-sm-h4" v-text="$lang('home.video.title')"></h3>
 						<div class="line mb-6" style="width:50px"></div>
 						<p v-text="$lang('home.video.text')"></p>
@@ -117,7 +117,7 @@
 				<div class="line mx-auto mb-12" style="width:50px"></div>
 				<v-row justify="center">
 					<v-col lg="6">
-						<div class="d-flex">
+						<div class="d-flex flex-column flex-sm-row">
 							<v-text-field
 								class="mr-2"
 								v-model="form.email"
@@ -220,5 +220,8 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
+	}
+	.video-text {
+		max-width: calc(1125px / 2);
 	}
 </style>
