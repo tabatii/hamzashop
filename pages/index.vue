@@ -125,7 +125,7 @@
 								:error-messages="errors.email"
 								filled rounded
 							/>
-							<v-btn color="primary" height="56" :loading="loadin" depressed large rounded @click="newsletter">
+							<v-btn color="primary" height="56" :loading="loading" depressed large rounded @click="newsletter">
 								{{ $lang('home.newsletter.btn') }}
 							</v-btn>
 						</div>
