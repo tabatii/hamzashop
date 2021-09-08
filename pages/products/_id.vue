@@ -60,10 +60,10 @@
 								<img src="/template/amex.png" height="100%" />
 							</v-sheet>
 						</div>
-						<div class="d-flex">
-							<v-sheet max-width="130">
+						<div class="d-flex flex-column flex-sm-row">
+							<v-sheet :max-width="!$vuetify.breakpoint.smAndDown ? 130 : undefined">
 								<v-text-field
-									class="qty"
+									class="qty mb-2"
 									v-model.number="qty"
 									prepend-inner-icon="mdi-minus"
 									append-icon="mdi-plus"
@@ -72,11 +72,11 @@
 									outlined readonly hide-details
 								/>
 							</v-sheet>
-							<v-btn class="ml-2" height="56" depressed x-large @click="dialog = true">
+							<v-btn class="ml-0 ml-sm-2 mb-2" height="56" depressed x-large @click="dialog = true">
 								<span color="primary" class="pl-1" v-text="$lang('product.ship')"></span>
 								<v-icon size="30">mdi-chevron-down</v-icon>
 							</v-btn>
-							<v-btn color="primary" class="ml-2" height="56" depressed x-large @click="buy">
+							<v-btn color="primary" class="ml-0 ml-sm-2 mb-2" height="56" depressed x-large @click="buy">
 								{{ $lang('product.buy') }}
 							</v-btn>
 						</div>

@@ -4,7 +4,7 @@
 		<section class="mb-16">
 			<v-container>
 				<v-row>
-					<v-col sm="12" lg="7" class="pr-lg-12">
+					<v-col cols="12" lg="7" class="pr-lg-12">
 						<div>
 							<div>
 								<div class="font-weight-medium">{{ $lang('payment.address.title') }} :</div>
@@ -54,7 +54,7 @@
 						</div>
 					</v-col>
 					<v-divider class="d-none d-lg-inline-flex" vertical inset></v-divider>
-					<v-col sm="12" lg="5" class="pl-lg-12">
+					<v-col cols="12" lg="5" class="pl-lg-12">
 						<product-bill :product="product" :shipping="shipping.price"></product-bill>
 						<div v-if="method === 'card'">
 							<card-btn></card-btn>

@@ -4,7 +4,7 @@
 		<section class="mb-16">
 			<v-container>
 				<v-row>
-					<v-col sm="12" lg="7" class="pr-lg-12">
+					<v-col cols="12" lg="7" class="pr-lg-12">
 						<div>
 							<v-text-field
 								v-model="form.name"
@@ -60,7 +60,7 @@
 						</div>
 					</v-col>
 					<v-divider class="d-none d-lg-inline-flex" vertical inset></v-divider>
-					<v-col sm="12" lg="5" class="pl-lg-12">
+					<v-col cols="12" lg="5" class="pl-lg-12">
 						<product-bill :product="product" :shipping="shipping.price"></product-bill>
 						<v-btn color="primary" :loading="loading" block depressed x-large @click="next">
 							{{ $lang('address.form.submit') }}

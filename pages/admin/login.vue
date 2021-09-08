@@ -3,7 +3,7 @@
 		<v-row justify="center" no-gutters>
 			<v-col lg="8" xl="6">
 				<v-sheet class="d-flex flex-column justify-center" min-height="100vh">
-					<div class="pa-16">
+					<div class="pa-3 pa-sm-16">
 						<v-snackbar v-if="errors.auth" v-model="snackbar" color="error" timeout="10000" top text>{{ errors.auth }}</v-snackbar>
 						<v-text-field
 							label="Email"
