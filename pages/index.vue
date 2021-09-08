@@ -18,7 +18,7 @@
 		</section>
 		<section>
 			<v-container>
-				<h3 class="text-h4 text-center" v-text="$lang('home.products.title')">Our Products</h3>
+				<h3 class="text-h4 text-center" v-text="$lang('home.products.title')"></h3>
 				<div class="line mx-auto mb-8" style="width:50px"></div>
 				<v-row class="mb-8">
 					<v-col lg="4" class="pa-8" v-for="product in products.data" :key="product.id">
@@ -125,7 +125,7 @@
 								:error-messages="errors.email"
 								filled rounded
 							/>
-							<v-btn color="primary" height="56" :loading="loading" depressed large rounded @click="newsletter">
+							<v-btn color="primary" height="56" :loading="loadin" depressed large rounded @click="newsletter">
 								{{ $lang('home.newsletter.btn') }}
 							</v-btn>
 						</div>

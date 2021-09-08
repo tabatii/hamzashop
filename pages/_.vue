@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<section class="bg"></section>
 		<section class="text-center mb-16">
 			<h1>4O4</h1>
 			<p v-text="$lang('error.text')"></p>
