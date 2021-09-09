@@ -1,26 +1,31 @@
 <template>
 	<div>
-		<section class="intro bg pa-0">
-			<v-container>
-				<div class="d-flex justify-center justify-sm-end">
-					<img src="/template/header.png" :height="height" />
-				</div>
-				<div class="intro-text d-sm-flex">
-					<h3 class="text-h5 text-sm-h4 text-lg-h2 mb-4" v-text="$lang('home.intro.title')"></h3>
-					<p class="body-1 text-sm-h6 text-lg-h5 font-weight-light px-1 mb-6" v-text="$lang('home.intro.text')"></p>
-					<div v-if="products.data.length">
-						<v-btn :to="`/products/${products.data[0].id}`" class="mx-1" color="primary" rounded depressed x-large nuxt>
-							{{ $lang('home.intro.btn') }}
-						</v-btn>
-					</div>
-				</div>
-			</v-container>
+		<section class="pa-0">
+			<v-carousel height="650" :show-arrows="false" hide-delimiters>
+				<v-carousel-item src="/template/header.jpg" transition="fade-transition">
+					<v-overlay absolute>
+						<v-container>
+							<v-row>
+								<v-col lg="8" xl="7">
+									<h3 class="text-h5 text-sm-h3 text-lg-h2 mb-4" v-text="$lang('home.intro.title')"></h3>
+									<p class="body-1 text-sm-h6 text-lg-h5 font-weight-light px-1 mb-6" v-text="$lang('home.intro.text')"></p>
+									<div v-if="products.data.length">
+										<v-btn :to="`/products/${products.data[0].id}`" class="mx-1" color="primary" rounded depressed x-large nuxt>
+											{{ $lang('home.intro.btn') }}
+										</v-btn>
+									</div>
+								</v-col>
+							</v-row>
+						</v-container>
+					</v-overlay>
+				</v-carousel-item>
+			</v-carousel>
 		</section>
 		<section>
-			<v-container>
+			<v-container class="mb-8">
 				<h3 class="text-h5 text-sm-h4 text-center" v-text="$lang('home.products.title')"></h3>
-				<div class="line mx-auto mb-8" style="width:50px"></div>
-				<v-row class="mb-8">
+				<div class="line mx-auto mb-12" style="width:50px"></div>
+				<v-row>
 					<v-col cols="12" lg="4" v-for="product in products.data" :key="product.id">
 						<v-hover>
 							<template v-slot:default="{ hover }">
@@ -53,25 +58,27 @@
 						<v-icon class="play-icon" color="white" size="92">mdi-play-circle-outline</v-icon>
 					</div>
 				</v-col>
-				<v-col lg="6" class="d-flex align-center justify-center justify-lg-start">
-					<div class="video-text px-3 px-lg-16 py-16 py-lg-0">
-						<h3 class="text-h5 text-sm-h4" v-text="$lang('home.video.title')"></h3>
-						<div class="line mb-6" style="width:50px"></div>
-						<p v-text="$lang('home.video.text')"></p>
-						<v-dialog v-model="dialog" width="853">
-							<template v-slot:activator="{ on, attrs }">
-								<v-btn color="primary" depressed large v-bind="attrs" v-on="on">{{ $lang('home.video.btn') }}</v-btn>
-							</template>
-							<v-sheet height="480">
-								<iframe ref="iframe" width="100%" height="100%" src="https://www.youtube.com/embed/W41tiLTQop4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-							</v-sheet>
-						</v-dialog>
-					</div>
+				<v-col lg="6">
+					<v-row class="ma-0" align="center" style="height:100%">
+						<v-col lg="9" class="px-md-16 py-16 py-lg-3">
+							<h3 class="text-h5 text-sm-h4" v-text="$lang('home.video.title')"></h3>
+							<div class="line mb-6" style="width:50px"></div>
+							<p v-text="$lang('home.video.text')"></p>
+							<v-dialog v-model="dialog" max-width="853">
+								<template v-slot:activator="{ on, attrs }">
+									<v-btn color="primary" depressed large v-bind="attrs" v-on="on">{{ $lang('home.video.btn') }}</v-btn>
+								</template>
+								<v-sheet height="480">
+									<iframe ref="iframe" width="100%" height="100%" src="https://www.youtube.com/embed/W41tiLTQop4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</v-sheet>
+							</v-dialog>
+						</v-col>
+					</v-row>
 				</v-col>
 			</v-row>
 		</div>
 		<section>
-			<v-container class="py-16">
+			<v-container class="mb-8">
 				<v-row>
 					<v-col cols="12" lg="6" class="order-lg-2 pa-xl-8">
 						<v-img src="/template/main-2.jpg" lazy-src="/template/placeholder.png" aspect-ratio="4/3" width="100%" />
@@ -79,7 +86,7 @@
 					<v-col cols="12" lg="6" class="d-flex align-center order-lg-1 pa-xl-8">
 						<div>
 							<h3 class="text-h5 text-sm-h4" v-text="$lang('home.steps.title')"></h3>
-							<div class="line mb-8" style="width:50px"></div>
+							<div class="line mb-6" style="width:50px"></div>
 							<div>
 								<div class="d-flex">
 									<span><v-icon color="primary" size="20">mdi-checkbox-blank-circle</v-icon></span>

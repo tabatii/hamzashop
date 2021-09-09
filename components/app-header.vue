@@ -66,12 +66,12 @@
 		<v-app-bar color="white" height="75" tag="div" flat>
 			<v-container class="d-lg-none">
 				<v-row no-gutters>
-					<v-col lg="6">
+					<v-col>
 						<v-toolbar-title>
 							<app-logo />
 						</v-toolbar-title>
 					</v-col>
-					<v-col lg="6" class="d-flex justify-end">
+					<v-col class="d-flex justify-end">
 						<v-menu transition="scroll-y-transition" offset-y left>
 							<template v-slot:activator="{ on, attrs }">
 								<v-btn class="px-3" min-width="36" depressed v-bind="attrs" v-on="on">
