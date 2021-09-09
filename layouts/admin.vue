@@ -3,10 +3,10 @@
 		<admin-header />
 		<v-main class="bg">
 			<v-row no-gutters>
-				<v-col sm="3" xl="2" class="side">
+				<v-col cols="12" sm="3" xl="2" class="side">
 					<admin-side />
 				</v-col>
-				<v-col sm="9" xl="10">
+				<v-col cols="12" sm="9" xl="10">
 					<Nuxt />
 				</v-col>
 			</v-row>

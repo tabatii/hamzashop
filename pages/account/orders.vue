@@ -166,6 +166,11 @@
 										{{ $lang('orders.table.cancel') }}
 									</v-btn>
 								</div>
+								<div v-else-if="order.status !== 'received' && order.status !== 'cancelled'">
+									<v-btn color="info" small block depressed @click="finish(order.id)">
+										{{ $lang('orders.table.finish') }}
+									</v-btn>
+								</div>
 							</v-col>
 						</v-row>
 					</v-col>
@@ -210,17 +215,22 @@
 				this.active = this.orders.data[i]
 				this.dialog = true
 			},
+			finish (id) {
+				this.$swal(this.confirm).then(result => {
+					if (result.isConfirmed) {
+						this.$axios.$patch(`/orders/finish/${id}`)
+						.finally(response => {
+							this.$nuxt.refresh()
+						})
+					}
+				})
+			},
 			cancel (id) {
 				this.$swal(this.confirm).then(result => {
 					if (result.isConfirmed) {
 						this.$axios.$patch(`/orders/cancel/${id}`)
-						.then(response => {
+						.finally(response => {
 							this.$nuxt.refresh()
-						}).catch(error => {
-							this.$swal({
-								text: error.response.data.message,
-								icon: 'error'
-							})
 						})
 					}
 				})

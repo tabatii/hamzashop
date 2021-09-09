@@ -9,7 +9,7 @@
 								label="Price"
 								v-model="form.price"
 								:error-messages="errors.price"
-								suffix="DH"
+								suffix="MAD"
 								outlined
 							/>
 							<v-text-field
@@ -48,7 +48,7 @@
 										</td>
 										<td>
 											<span v-text="product.price"></span>
-											<span>DH</span>
+											<span>MAD</span>
 										</td>
 										<td>
 											<span v-text="product.stock"></span>

@@ -1,5 +1,5 @@
 <template>
-	<div class="pa-lg-12">
+	<div class="pa-12">
 		<v-row>
 			<v-col cols="12" xl="9">
 				<v-row class="ma-0">
@@ -13,7 +13,7 @@
 					</v-col>
 				</v-row>
 				<v-row class="ma-0">
-					<v-col cols="6">
+					<v-col cols="12" lg="6">
 						<v-text-field
 							label="Short title"
 							v-model="form.short"
@@ -21,16 +21,16 @@
 							solo
 						/>
 					</v-col>
-					<v-col cols="3">
+					<v-col cols="12" lg="3">
 						<v-text-field
 							label="Price"
 							v-model="form.price"
 							:error-messages="errors.price"
-							suffix="DH"
+							suffix="MAD"
 							solo
 						/>
 					</v-col>
-					<v-col cols="3">
+					<v-col cols="12" lg="3">
 						<v-text-field
 							label="Stock"
 							v-model="form.stock"

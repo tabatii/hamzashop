@@ -144,6 +144,7 @@ module.exports = {
 			status: 'statut',
 			operation: 'Opération',
 			details: 'Détails',
+			finish: 'A reçu',
 			cancel: 'Annuler',
 		},
 		dialog: {

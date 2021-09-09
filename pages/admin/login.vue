@@ -44,7 +44,7 @@
 						maxAge: response.expires,
 						path: '/'
 					})
-					this.$router.replace('/admin/dashboard')
+					this.$router.replace('/admin')
 				}).catch(error => {
 					this.loading = false
 					this.snackbar = (error.response.status) === 401 ? true : false

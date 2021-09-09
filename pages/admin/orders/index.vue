@@ -96,15 +96,15 @@
 										</td>
 										<td>
 											<span v-text="order.unit_price"></span>
-											<span>DH</span>
+											<span>MAD</span>
 										</td>
 										<td>
 											<span v-text="order.shipping_price"></span>
-											<span>DH</span>
+											<span>MAD</span>
 										</td>
 										<td>
 											<span v-text="order.total_amount"></span>
-											<span>DH</span>
+											<span>MAD</span>
 										</td>
 										<td>
 											<span v-text="order.paid_amount"></span>

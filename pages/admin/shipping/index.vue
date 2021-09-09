@@ -22,7 +22,7 @@
 										</td>
 										<td>
 											<span v-text="rate.price"></span>
-											<span>DH</span>
+											<span>MAD</span>
 										</td>
 										<td>
 											<span v-text="rate.min"></span>
@@ -52,7 +52,7 @@
 										<td>
 											<v-sheet outlined rounded>
 												<v-text-field
-													suffix="DH"
+													suffix="MAD"
 													v-model="form.price"
 													:error-messages="errors.price"
 													dense solo flat hide-details
