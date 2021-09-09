@@ -7,6 +7,9 @@ export default {
     api: process.env.API_URL,
     blog: process.env.BLOG_URL,
     paypal: process.env.PAYPAL_ID,
+    googleAnalytics: {
+      id: process.env.GA_ID
+    }
   },
 
   router: {
@@ -103,12 +106,14 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/firebase',
-    'vue-sweetalert2/nuxt',
+    '@nuxtjs/google-analytics',
     'cookie-universal-nuxt',
+    'vue-sweetalert2/nuxt',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
+    //
   },
 
   firebase: {
@@ -124,6 +129,10 @@ export default {
     services: {
       storage: true,
     }
+  },
+
+  googleAnalytics: {
+    //
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
