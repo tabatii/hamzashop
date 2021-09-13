@@ -80,15 +80,6 @@ module.exports = {
 			submit: 'Envoyer',
 		}
 	},
-	login: {
-		separator: 'ou',
-		form: {
-			email: 'Email',
-			password: 'Mot de passe',
-			submit: 'Connexion',
-			btn: 'S\'inscrire',
-		}
-	},
 	register: {
 		separator: 'ou',
 		form: {
@@ -98,6 +89,29 @@ module.exports = {
 			confirmation: 'Confirmation',
 			submit: 'S\'inscrire',
 			btn: 'Connexion',
+		}
+	},
+	login: {
+		separator: 'ou',
+		form: {
+			email: 'Email',
+			password: 'Mot de passe',
+			forgot: 'Mot de passe oublié ?',
+			submit: 'Connexion',
+			btn: 'S\'inscrire',
+		}
+	},
+	forgot: {
+		form: {
+			email: 'Email',
+			submit: 'Envoyer',
+		}
+	},
+	reset: {
+		form: {
+			password: 'Mot de passe',
+			confirmation: 'Confirmation',
+			submit: 'Réinitialiser',
 		}
 	},
 	product: {

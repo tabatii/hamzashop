@@ -12,12 +12,6 @@ export default {
     }
   },
 
-  router: {
-    middleware: [
-      'currency',
-    ],
-  },
-
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - ' + process.env.APP_NAME,

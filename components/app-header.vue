@@ -3,7 +3,7 @@
 		<v-alert v-model="verify" color="error" class="pa-0 mb-0" text tile>
 			<v-container>
 				<span class="mr-2">Verify your account now.</span>
-				<v-btn to="/verification" color="primary" small depressed>Resend link</v-btn>
+				<v-btn to="/auth/verification" color="primary" small depressed>Resend link</v-btn>
 			</v-container>
 		</v-alert>
 		<v-app-bar color="white" height="42" tag="div" flat>

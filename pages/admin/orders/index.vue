@@ -178,7 +178,7 @@
 			},
 			status (id) {
 				this.loading = true
-				this.$admin.$patch(`/orders/status/${id}`, this.form)
+				this.$admin.$patch(`/orders/${id}`, this.form)
 				.finally(response => {
 					this.dialog.status = false
 					this.loading = false

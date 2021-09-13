@@ -1,13 +1,14 @@
 <template>
 	<div class="pa-12">
 		<v-row>
-			<v-col cols="12">
-				<v-card class="mb-4">
+			<v-col cols="12" xl="8">
+				<v-card>
 					<v-card-text class="pa-0">
 						<v-simple-table>
 							<template v-slot:default>
 								<thead>
 									<tr>
+										<th class="text-left">#</th>
 										<th class="text-left">Country</th>
 										<th class="text-left">Price</th>
 										<th class="text-left">Min time</th>
@@ -17,6 +18,7 @@
 								</thead>
 								<tbody>
 									<tr v-for="(rate, i) in rates.data" :key="rate.id">
+										<td v-text="i + 1"></td>
 										<td>
 											<span class="text-capitalize" v-text="rate.country"></span>
 										</td>
@@ -38,61 +40,46 @@
 											</v-btn>
 										</td>
 									</tr>
-									<tr>
-										<td>
-											<v-sheet outlined rounded>
-												<v-select
-													:items="countries"
-													v-model="form.country"
-													:error-messages="errors.country"
-													dense solo flat hide-details
-												/>
-											</v-sheet>
-										</td>
-										<td>
-											<v-sheet outlined rounded>
-												<v-text-field
-													suffix="MAD"
-													v-model="form.price"
-													:error-messages="errors.price"
-													dense solo flat hide-details
-												/>
-											</v-sheet>
-										</td>
-										<td>
-											<v-sheet outlined rounded>
-												<v-text-field
-													suffix="Days"
-													v-model="form.min"
-													:error-messages="errors.min"
-													dense solo flat hide-details
-												/>
-											</v-sheet>
-										</td>
-										<td>
-											<v-sheet outlined rounded>
-												<v-text-field
-													suffix="Days"
-													v-model="form.max"
-													:error-messages="errors.max"
-													dense solo flat hide-details
-												/>
-											</v-sheet>
-										</td>
-										<td>
-											<v-btn color="primary" :loading="loading" x-small fab depressed @click="save">
-												<v-icon>mdi-check</v-icon>
-											</v-btn>
-										</td>
-									</tr>
 								</tbody>
 							</template>
 						</v-simple-table>
 					</v-card-text>
 				</v-card>
-				<v-alert type="error" text v-if="Object.keys(errors).length">
-					<p class="mb-0" v-for="(error, i) in errors" :key="i" v-text="error[0]"></p>
-				</v-alert>
+			</v-col>
+			<v-col cols="12" xl="4">
+				<v-card>
+					<v-card-text class="pa-6">
+						<v-select
+							label="Country"
+							:items="countries"
+							v-model="form.country"
+							:error-messages="errors.country"
+							outlined
+						/>
+						<v-text-field
+							label="Price"
+							v-model="form.price"
+							:error-messages="errors.price"
+							suffix="MAD"
+							outlined
+						/>
+						<v-text-field
+							label="Minimum time"
+							v-model="form.min"
+							:error-messages="errors.min"
+							suffix="Days"
+							outlined
+						/>
+						<v-text-field
+							label="Maximum time"
+							v-model="form.max"
+							:error-messages="errors.max"
+							suffix="Days"
+							outlined
+						/>
+						<v-btn color="primary" :loading="loading" block depressed x-large @click="save">Save</v-btn>
+					</v-card-text>
+				</v-card>
 			</v-col>
 		</v-row>
 	</div>

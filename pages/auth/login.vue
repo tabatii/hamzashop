@@ -4,7 +4,9 @@
 			<v-col lg="8" xl="6">
 				<v-sheet class="d-flex flex-column justify-center" min-height="100vh">
 					<div class="pa-3 pa-sm-16">
-						<v-snackbar v-if="errors.auth" v-model="snackbar" color="error" timeout="10000" top text>{{ errors.auth }}</v-snackbar>
+						<v-snackbar v-if="errors.auth" v-model="snackbar" color="error" timeout="10000" top text>
+							{{ errors.auth }}
+						</v-snackbar>
 						<v-text-field
 							v-model="form.email"
 							:label="$lang('login.form.email')"
@@ -18,8 +20,12 @@
 							:append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
 							:type="show ? 'text' : 'password'"
 							@click:append="show = !show"
-							outlined
+							outlined hide-details
 						/>
+						<div class="error-wrapper d-flex mb-6">
+							<span class="error-text" v-if="errors.password" v-text="errors.password[0]"></span>
+							<nuxt-link to="/auth/forgot" class="forgot body-2" color="primary" text>{{ $lang('login.form.forgot') }}</nuxt-link>
+						</div>
 						<div>
 							<v-btn color="primary" :loading="loading" block depressed x-large @click="login">
 								{{ $lang('login.form.submit') }}
@@ -94,3 +100,11 @@
 		}
 	}
 </script>
+
+<style scoped>
+	.forgot {
+		margin-left: auto;
+		line-height: .75rem;
+		text-decoration: none;
+	}
+</style>

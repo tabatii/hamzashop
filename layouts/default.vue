@@ -10,6 +10,7 @@
 
 <script>
 	export default {
-		name: 'DefaultLayout'
+		name: 'DefaultLayout',
+		middleware: 'currency'
 	}
 </script>

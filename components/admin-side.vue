@@ -1,7 +1,11 @@
 <template>
 	<div>
-		<v-list shaped>
-			<v-list-item-group color="primary">
+		<div class="d-flex align-center px-4" style="height:75px">
+			<nuxt-link to="/" class="logo">AdminCP</nuxt-link>
+		</div>
+		<v-divider dark></v-divider>
+		<v-list color="primary darken-4" dark shaped>
+			<v-list-item-group>
 				<v-list-item to="/admin" nuxt exact>
 					<v-list-item-icon>
 						<v-icon>mdi-view-dashboard</v-icon>
@@ -54,3 +58,16 @@
 		</v-list>
 	</div>
 </template>
+
+<style scoped>
+	.logo {
+		display: flex;
+		color: white;
+		font-size: 40px;
+		font-weight: 100;
+		line-height: 1;
+		letter-spacing: 5px;
+		text-transform: capitalize;
+		text-decoration: none;
+	}
+</style>

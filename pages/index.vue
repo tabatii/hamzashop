@@ -3,12 +3,12 @@
 		<section class="pa-0">
 			<v-carousel height="650" :show-arrows="false" hide-delimiters>
 				<v-carousel-item src="/template/header.jpg" transition="fade-transition">
-					<v-overlay absolute>
+					<div class="wrapper" style="background-color:rgba(33,33,33,.46)">
 						<v-container>
 							<v-row>
 								<v-col lg="8" xl="7">
-									<h3 class="text-h5 text-sm-h3 text-lg-h2 mb-4" v-text="$lang('home.intro.title')"></h3>
-									<p class="body-1 text-sm-h6 text-lg-h5 font-weight-light px-1 mb-6" v-text="$lang('home.intro.text')"></p>
+									<h3 class="white--text text-h5 text-sm-h3 text-lg-h2 mb-4" v-text="$lang('home.intro.title')"></h3>
+									<p class="white--text text-sm-h6 text-lg-h5 font-weight-light px-1 mb-6" v-text="$lang('home.intro.text')"></p>
 									<div v-if="products.data.length">
 										<v-btn :to="`/products/${products.data[0].id}`" class="mx-1" color="primary" rounded depressed x-large nuxt>
 											{{ $lang('home.intro.btn') }}
@@ -17,7 +17,7 @@
 								</v-col>
 							</v-row>
 						</v-container>
-					</v-overlay>
+					</div>
 				</v-carousel-item>
 			</v-carousel>
 		</section>
@@ -50,31 +50,33 @@
 				</v-row>
 			</v-container>
 		</section>
-		<div class="bg">
+		<div class="video bg">
 			<v-row no-gutters>
 				<v-col lg="6">
-					<div class="video-player">
+					<div class="player">
 						<v-img src="/template/main-1.png" width="100%" />
-						<v-icon class="play-icon" color="white" size="92">mdi-play-circle-outline</v-icon>
+						<v-icon class="icon" color="white" size="92">mdi-play-circle-outline</v-icon>
 					</div>
 				</v-col>
-				<v-col lg="6">
-					<v-row class="ma-0" align="center" style="height:100%">
-						<v-col lg="9" class="px-md-16 py-16 py-lg-3">
-							<h3 class="text-h5 text-sm-h4" v-text="$lang('home.video.title')"></h3>
-							<div class="line mb-6" style="width:50px"></div>
-							<p v-text="$lang('home.video.text')"></p>
-							<v-dialog v-model="dialog" max-width="853">
-								<template v-slot:activator="{ on, attrs }">
-									<v-btn color="primary" depressed large v-bind="attrs" v-on="on">{{ $lang('home.video.btn') }}</v-btn>
-								</template>
-								<v-sheet height="480">
-									<iframe ref="iframe" width="100%" height="100%" src="https://www.youtube.com/embed/W41tiLTQop4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-								</v-sheet>
-							</v-dialog>
-						</v-col>
-					</v-row>
-				</v-col>
+				<div :class="{wrapper: !$vuetify.breakpoint.lgAndDown}">
+					<v-container>
+						<v-row justify="end" no-gutters>
+							<v-col lg="6" class="px-md-16 py-8 py-lg-0">
+								<h3 class="text-h5 text-sm-h4" v-text="$lang('home.video.title')"></h3>
+								<div class="line mb-6" style="width:50px"></div>
+								<p v-text="$lang('home.video.text')"></p>
+								<v-dialog v-model="dialog" max-width="853">
+									<template v-slot:activator="{ on, attrs }">
+										<v-btn color="primary" depressed large v-bind="attrs" v-on="on">{{ $lang('home.video.btn') }}</v-btn>
+									</template>
+									<v-sheet height="480">
+										<iframe ref="iframe" width="100%" height="100%" src="https://www.youtube.com/embed/W41tiLTQop4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									</v-sheet>
+								</v-dialog>
+							</v-col>
+						</v-row>
+					</v-container>
+				</div>
 			</v-row>
 		</div>
 		<section>
@@ -148,18 +150,6 @@
 		head: {
 			title: 'Home'
 		},
-		computed: {
-			height () {
-				if (this.$vuetify.breakpoint.name === 'sm') {
-					return '300px'
-				} else if (this.$vuetify.breakpoint.name === 'md') {
-					return '350px'
-				} else if (this.$vuetify.breakpoint.name === 'lg') {
-					return '450px'
-				}
-				return '550px'
-			}
-		},
 		watch: {
 			dialog (newValue, oldValue) {
 				if (newValue === false) {
@@ -205,30 +195,24 @@
 </script>
 
 <style scoped>
-	.intro .container {
-		position: relative;
-		padding-bottom: 0;
-	}
-	.intro-text {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		display: none;
-		flex-direction: column;
-		justify-content: center;
-		max-width: 60%;
-	}
-	.video-player {
-		position: relative;
-	}
-	.video-player .play-icon {
+	.wrapper {
 		position: absolute;
 		top: 0;
 		left: 0;
 		right: 0;
 		bottom: 0;
+		display: flex;
+		align-items: center;
 	}
-	.video-text {
-		max-width: calc(1125px / 2);
+	.video,
+	.video .player {
+		position: relative;
+	}
+	.video .icon {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
 	}
 </style>

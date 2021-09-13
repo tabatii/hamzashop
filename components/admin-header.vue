@@ -4,15 +4,27 @@
 			<v-container class="pa-0" fluid>
 				<div class="d-flex align-center">
 					<div>
-						<v-toolbar-title>
-							<app-logo />
-						</v-toolbar-title>
+						<v-btn fab small depressed>
+							<v-icon>mdi-menu</v-icon>
+						</v-btn>
 					</div>
 					<div class="ml-auto">
-						<v-btn to="/admin/products/form" color="primary" icon nuxt><v-icon>mdi-plus</v-icon></v-btn>
-						<v-btn to="/admin/messages" color="primary" icon nuxt><v-icon>mdi-forum</v-icon></v-btn>
-						<v-btn to="/admin/notifications" color="primary" icon nuxt><v-icon>mdi-bell</v-icon></v-btn>
-						<v-btn color="primary" :loading="loading" icon @click="logout"><v-icon>mdi-logout</v-icon></v-btn>
+						<v-btn to="/admin/products/form" class="ml-2" fab small depressed nuxt>
+							<v-icon>mdi-plus</v-icon>
+						</v-btn>
+						<v-badge color="error" :content="messages" :value="messages" bordered overlap>
+							<v-btn to="/admin/messages" class="ml-2" fab small depressed nuxt>
+								<v-icon>mdi-chat</v-icon>
+							</v-btn>
+						</v-badge>
+						<v-badge color="error" :content="notifications" :value="notifications" bordered overlap>
+							<v-btn to="/admin/notifications" class="ml-2" fab small depressed nuxt>
+								<v-icon>mdi-bell</v-icon>
+							</v-btn>
+						</v-badge>
+						<v-btn class="ml-2" :loading="loading" fab small depressed @click="logout">
+							<v-icon>mdi-logout</v-icon>
+						</v-btn>
 					</div>
 				</div>
 			</v-container>
@@ -21,8 +33,18 @@
 </template>
 
 <script>
+	import { mapState } from 'vuex'
 	import moment from 'moment'
 	export default {
+		computed: {
+			...mapState(['header']),
+			notifications () {
+				return this.header.notifications
+			},
+			messages () {
+				return this.header.messages
+			}
+		},
 		methods: {
 			logout () {
 				this.loading = true
@@ -31,15 +53,11 @@
 					this.$cookies.remove('at')
 					this.$router.go()
 				})
-			},
-			time (date) {
-				return moment(date).fromNow()
 			}
 		},
 		data () {
 			return {
-				loading: false,
-				messages: {}
+				loading: false
 			}
 		}
 	}

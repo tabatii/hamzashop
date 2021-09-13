@@ -84,7 +84,7 @@
 						maxAge: response.expires,
 						path: '/'
 					})
-					this.$router.replace('/verification')
+					this.$router.replace('/auth/verification')
 				}).catch(error => {
 					this.loading = false
 					this.errors = error.response.data.errors

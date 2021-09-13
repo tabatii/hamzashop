@@ -186,7 +186,7 @@
 				}
 			}
 		},
-		mounted () {
+		created () {
 			if (this.$route.params.id) {
 				this.$admin.$get(`/products/${this.$route.params.id}`)
 				.then(response => {
