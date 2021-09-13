@@ -3,11 +3,6 @@
 		<v-app-bar color="white" height="75" tag="div" flat>
 			<v-container class="pa-0" fluid>
 				<div class="d-flex align-center">
-					<div>
-						<v-btn fab small depressed>
-							<v-icon>mdi-menu</v-icon>
-						</v-btn>
-					</div>
 					<div class="ml-auto">
 						<v-btn to="/admin/products/form" class="ml-2" fab small depressed nuxt>
 							<v-icon>mdi-plus</v-icon>

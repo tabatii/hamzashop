@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="d-flex align-center px-4" style="height:75px">
+		<div class="d-flex align-center px-4" style="height:74px">
 			<nuxt-link to="/" class="logo">AdminCP</nuxt-link>
 		</div>
 		<v-divider dark></v-divider>
