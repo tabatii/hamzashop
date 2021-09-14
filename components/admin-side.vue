@@ -4,7 +4,7 @@
 			<nuxt-link to="/" class="logo">AdminCP</nuxt-link>
 		</div>
 		<v-divider dark></v-divider>
-		<v-list color="primary darken-4" dark shaped>
+		<v-list color="rgba(0,0,0,0)" dark shaped>
 			<v-list-item-group>
 				<v-list-item to="/admin" nuxt exact>
 					<v-list-item-icon>
