@@ -46,14 +46,6 @@
 						<v-list-item-title>Shipping</v-list-item-title>
 					</v-list-item-content>
 				</v-list-item>
-				<v-list-item to="/admin/settings" nuxt exact>
-					<v-list-item-icon>
-						<v-icon>mdi-cog</v-icon>
-					</v-list-item-icon>
-					<v-list-item-content>
-						<v-list-item-title>Settings</v-list-item-title>
-					</v-list-item-content>
-				</v-list-item>
 			</v-list-item-group>
 		</v-list>
 	</div>
