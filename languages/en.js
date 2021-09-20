@@ -134,7 +134,8 @@ module.exports = {
 	},
 	address: {
 		form: {
-			name: 'Full name',
+			first: 'First name',
+			last: 'Last name',
 			street: 'Address',
 			details: 'Apartment, suite, floor, etc. (Optional)',
 			country: 'Country',
@@ -148,6 +149,16 @@ module.exports = {
 		submit: 'Finish order',
 		address: {
 			title: 'Shipping address',
+		},
+		methods: {
+			cash: 'Pay on delivery',
+		},
+		form: {
+			invalid: 'Invalid credit card',
+			name: 'Name',
+			card: 'Card number',
+			date: 'Expiration date',
+			submit: 'Pay now',
 		}
 	},
 	orders: {

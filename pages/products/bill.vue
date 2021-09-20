@@ -6,12 +6,24 @@
 				<v-row>
 					<v-col cols="12" lg="7" class="pr-lg-12">
 						<div>
-							<v-text-field
-								v-model="form.name"
-								:label="$lang('address.form.name')"
-								:error-messages="errors.name"
-								outlined autofocus
-							/>
+							<v-row dense>
+								<v-col cols="6">
+									<v-text-field
+										v-model="form.first"
+										:label="$lang('address.form.first')"
+										:error-messages="errors.first"
+										outlined autofocus
+									/>
+								</v-col>
+								<v-col cols="6">
+									<v-text-field
+										v-model="form.last"
+										:label="$lang('address.form.last')"
+										:error-messages="errors.last"
+										outlined
+									/>
+								</v-col>
+							</v-row>
 							<v-text-field
 								v-model="form.street"
 								:label="$lang('address.form.street')"
@@ -28,8 +40,8 @@
 								v-model="form.country"
 								:label="$lang('address.form.country')"
 								:error-messages="errors.country"
-								item-value="country"
 								item-text="country"
+								item-value="code"
 								:items="rates"
 								outlined
 							/>
@@ -47,6 +59,7 @@
 										v-model="form.zip"
 										:label="$lang('address.form.zip')"
 										:error-messages="errors.zip"
+										counter="5"
 										outlined
 									/>
 								</v-col>
@@ -80,7 +93,7 @@
 		},
 		watch: {
 			'form.country' (newValue) {
-				this.shipping = this.rates.find(rate => rate.country === newValue)
+				this.shipping = this.rates.find(rate => rate.code === newValue)
 				this.$cookies.set('s', this.shipping.id, { path: '/' })
 			}
 		},
@@ -113,7 +126,8 @@
 				errors: {},
 				rates: {},
 				form: {
-					name: null,
+					first: null,
+					last: null,
 					street: null,
 					details: null,
 					country: null,
@@ -125,7 +139,7 @@
 		},
 		created () {
 			let result = this.rates.find(rate => rate.id === this.$cookies.get('s'))
-			this.form.country = result.country
+			this.form.country = result.code
 			this.shipping = result
 		}
 	}

@@ -181,6 +181,7 @@
 </template>
 
 <script>
+	import { getName } from 'country-list'
 	export default {
 		middleware: 'auth',
 		head: {
@@ -213,6 +214,7 @@
 		methods: {
 			details (i) {
 				this.active = this.orders.data[i]
+				this.active.address.country = getName(this.active.address.country)
 				this.dialog = true
 			},
 			finish (id) {

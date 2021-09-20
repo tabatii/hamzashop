@@ -134,7 +134,8 @@ module.exports = {
 	},
 	address: {
 		form: {
-			name: 'Nom et Prénom',
+			first: 'Prénom',
+			last: 'Nom',
 			street: 'Rue',
 			details: 'Appartement, suite, étage, etc. (En option)',
 			country: 'Pays',
@@ -148,6 +149,16 @@ module.exports = {
 		submit: 'Terminer la commande',
 		address: {
 			title: 'Adresse de livraison',
+		},
+		methods: {
+			cash: 'Payer à la livraison',
+		},
+		form: {
+			invalid: 'Carte de crédit invalide',
+			name: 'Nom',
+			card: 'Numéro de carte',
+			date: 'Date d\'expiration',
+			submit: 'Payez maintenant',
 		}
 	},
 	orders: {

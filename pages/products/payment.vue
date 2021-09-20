@@ -30,6 +30,12 @@
 												<v-sheet height="42px" class="ml-2" outlined rounded>
 													<img src="/template/amex.png" height="100%" />
 												</v-sheet>
+												<v-sheet height="42px" class="ml-2" outlined rounded style="overflow:hidden">
+													<img src="/template/discover.png" height="100%" />
+												</v-sheet>
+												<v-sheet height="42px" class="ml-2" outlined rounded>
+													<img src="/template/jcb.png" height="100%" />
+												</v-sheet>
 											</div>
 										</template>
 									</v-radio>
@@ -42,10 +48,10 @@
 											</div>
 										</template>
 									</v-radio>
-									<v-radio value="cash" v-if="address.country === 'Morocco'">
+									<v-radio value="cash" v-if="address.country === 'MA'">
 										<template v-slot:label>
 											<div class="d-flex">
-												<p class="text--primary mb-0">Pay on delivery</p>
+												<p class="text--primary mb-0" v-text="$lang('payment.methods.cash')"></p>
 											</div>
 										</template>
 									</v-radio>
@@ -57,13 +63,13 @@
 					<v-col cols="12" lg="5" class="pl-lg-12">
 						<product-bill :product="product" :shipping="shipping.price"></product-bill>
 						<div v-if="method === 'card'">
-							<card-btn></card-btn>
+							<checkout-btn></checkout-btn>
 						</div>
 						<div v-else-if="method === 'paypal'" style="height:52px">
 							<paypal-btn></paypal-btn>
 						</div>
 						<div v-else-if="method === 'cash'">
-							<v-btn color="primary" :loading="loading" block depressed x-large @click="order">
+							<v-btn color="secondary" :loading="loading" block depressed x-large @click="order">
 								{{ $lang('payment.submit') }}
 							</v-btn>
 						</div>
@@ -109,6 +115,11 @@
 				shipping: {},
 				address: {},
 				product: {}
+			}
+		},
+		created () {
+			if (this.address.country === this.shipping.code) {
+				this.address.country = this.shipping.country
 			}
 		}
 	}

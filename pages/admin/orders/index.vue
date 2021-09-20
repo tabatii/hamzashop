@@ -142,6 +142,7 @@
 </template>
 
 <script>
+	import { getName } from 'country-list'
 	export default {
 		middleware: 'admin',
 		layout: 'admin',
@@ -169,6 +170,7 @@
 			},
 			openAddress (i) {
 				this.active = this.orders.data[i]
+				this.active.address.country = getName(this.active.address.country)
 				this.dialog.address = true
 			},
 			openStatus (i) {

@@ -86,7 +86,7 @@
 </template>
 
 <script>
-	import { getNames } from 'country-list'
+	import { getNames, getCode } from 'country-list'
 	export default {
 		middleware: 'admin',
 		layout: 'admin',
@@ -105,6 +105,11 @@
 					showCancelButton: true,
 					reverseButtons: true
 				}
+			}
+		},
+		watch: {
+			'form.country' (newValue) {
+				this.form.code = newValue ? getCode(newValue) : null
 			}
 		},
 		methods: {
@@ -132,6 +137,7 @@
 			},
 			reset () {
 				this.form.country = null
+				this.form.code = null
 				this.form.price = null
 				this.form.min = null
 				this.form.max = null
@@ -148,6 +154,7 @@
 				rates: {},
 				form: {
 					country: null,
+					code: null,
 					price: null,
 					min: null,
 					max: null
