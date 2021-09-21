@@ -125,7 +125,9 @@ export default {
   },
 
   googleAnalytics: {
-    //
+    ignoreRoutes: [
+      '/admin',
+    ]
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
