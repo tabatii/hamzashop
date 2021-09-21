@@ -83,8 +83,8 @@
 				dialog: false,
 				errors: {},
 				form: {
-					name: 'John Doe',
-					card: '378282246310005',
+					name: null,
+					card: null,
 					date: null,
 					cvv: null,
 					type: null
