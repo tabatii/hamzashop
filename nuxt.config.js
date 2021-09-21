@@ -112,13 +112,12 @@ export default {
 
   firebase: {
     config: {
-      apiKey: 'AIzaSyBiJM_1W_m06P7x9fykKNEIUKSMfw_vKsA',
-      authDomain: 'hamzashop-afb8f.firebaseapp.com',
-      projectId: 'hamzashop-afb8f',
-      storageBucket: 'hamzashop-afb8f.appspot.com',
-      messagingSenderId: '873529793056',
-      appId: '1:873529793056:web:f69698fcfa2151f11f3a45',
-      measurementId: 'G-DEXQSHEBP2',
+      apiKey: 'AIzaSyD2fiOhO-baooLKT2oOyJAQ-fk-3Gj4QLQ',
+      authDomain: 'hamzashop-63ed8.firebaseapp.com',
+      projectId: 'hamzashop-63ed8',
+      storageBucket: 'hamzashop-63ed8.appspot.com',
+      messagingSenderId: '938373796993',
+      appId: '1:938373796993:web:554c4746809fc7ff6ae980',
     },
     services: {
       storage: true,
