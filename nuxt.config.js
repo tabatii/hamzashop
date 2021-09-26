@@ -7,6 +7,7 @@ export default {
     api: process.env.API_URL,
     blog: process.env.BLOG_URL,
     paypal: process.env.PAYPAL_ID,
+    paymentwall: process.env.PW_KEY,
     googleAnalytics: {
       id: process.env.GA_ID
     }
@@ -83,6 +84,7 @@ export default {
     '~/plugins/language.js',
     '~/plugins/currency.js',
     '~/plugins/tiptap.js',
+    '~/plugins/mask.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

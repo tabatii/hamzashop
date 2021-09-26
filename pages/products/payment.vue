@@ -12,7 +12,7 @@
 									<span class="text-capitalize" v-text="address.street"></span>,
 									<span class="text-capitalize" v-text="address.city"></span>,
 									<span class="text-capitalize" v-text="address.zip"></span>,
-									<span class="text-capitalize" v-text="address.country"></span>.
+									<span class="text-capitalize" v-text="shipping.country"></span>.
 								</div>
 							</div>
 							<v-divider class="my-8"></v-divider>
@@ -20,20 +20,20 @@
 								<v-radio-group v-model="method">
 									<v-radio value="card" class="mb-6">
 										<template v-slot:label>
-											<div class="d-flex">
-												<v-sheet height="42px" outlined rounded>
+											<div class="d-flex flex-wrap">
+												<v-sheet height="42px" class="mr-2 my-1" outlined rounded>
 													<img src="/template/visa.png" height="100%" />
 												</v-sheet>
-												<v-sheet height="42px" class="ml-2" outlined rounded>
+												<v-sheet height="42px" class="mr-2 my-1" outlined rounded>
 													<img src="/template/mastercard.png" height="100%" />
 												</v-sheet>
-												<v-sheet height="42px" class="ml-2" outlined rounded>
+												<v-sheet height="42px" class="mr-2 my-1" outlined rounded>
 													<img src="/template/amex.png" height="100%" />
 												</v-sheet>
-												<v-sheet height="42px" class="ml-2" outlined rounded style="overflow:hidden">
+												<v-sheet height="42px" class="mr-2 my-1" outlined rounded>
 													<img src="/template/discover.png" height="100%" />
 												</v-sheet>
-												<v-sheet height="42px" class="ml-2" outlined rounded>
+												<v-sheet height="42px" class="mr-2 my-1" outlined rounded>
 													<img src="/template/jcb.png" height="100%" />
 												</v-sheet>
 											</div>
@@ -63,10 +63,10 @@
 					<v-col cols="12" lg="5" class="pl-lg-12">
 						<product-bill :product="product" :shipping="shipping.price"></product-bill>
 						<div v-if="method === 'card'">
-							<checkout-btn></checkout-btn>
+							<paymentwall></paymentwall>
 						</div>
 						<div v-else-if="method === 'paypal'" style="height:52px">
-							<paypal-btn></paypal-btn>
+							<paypal></paypal>
 						</div>
 						<div v-else-if="method === 'cash'">
 							<v-btn color="secondary" :loading="loading" block depressed x-large @click="order">
@@ -115,11 +115,6 @@
 				shipping: {},
 				address: {},
 				product: {}
-			}
-		},
-		created () {
-			if (this.address.country === this.shipping.code) {
-				this.address.country = this.shipping.country
 			}
 		}
 	}

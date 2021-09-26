@@ -107,14 +107,10 @@
 				}
 			}
 		},
-		watch: {
-			'form.country' (newValue) {
-				this.form.code = newValue ? getCode(newValue) : null
-			}
-		},
 		methods: {
 			save () {
 				this.loading = true
+				this.form.code = this.form.country ? getCode(this.form.country) : null
 				this.$admin.$post('/shipping', this.form)
 				.then(response => {
 					this.reset()

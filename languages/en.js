@@ -155,7 +155,6 @@ module.exports = {
 		},
 		form: {
 			invalid: 'Invalid credit card',
-			name: 'Name',
 			card: 'Card number',
 			date: 'Expiration date',
 			submit: 'Pay now',

@@ -46,18 +46,24 @@
 								</v-col>
 							</v-row>
 						</div>
-						<div class="d-flex mb-16">
-							<v-sheet height="42px" class="mr-2" outlined rounded>
+						<div class="d-flex flex-wrap mb-16">
+							<v-sheet height="42px" class="mr-2 my-1" outlined rounded>
 								<img src="/template/paypal.png" height="100%" />
 							</v-sheet>
-							<v-sheet height="42px" class="mr-2" outlined rounded>
+							<v-sheet height="42px" class="mr-2 my-1" outlined rounded>
 								<img src="/template/visa.png" height="100%" />
 							</v-sheet>
-							<v-sheet height="42px" class="mr-2" outlined rounded>
+							<v-sheet height="42px" class="mr-2 my-1" outlined rounded>
 								<img src="/template/mastercard.png" height="100%" />
 							</v-sheet>
-							<v-sheet height="42px" class="mr-2" outlined rounded>
+							<v-sheet height="42px" class="mr-2 my-1" outlined rounded>
 								<img src="/template/amex.png" height="100%" />
+							</v-sheet>
+							<v-sheet height="42px" class="mr-2 my-1" outlined rounded>
+								<img src="/template/discover.png" height="100%" />
+							</v-sheet>
+							<v-sheet height="42px" class="mr-2 my-1" outlined rounded>
+								<img src="/template/jcb.png" height="100%" />
 							</v-sheet>
 						</div>
 						<div class="d-flex flex-column flex-sm-row">

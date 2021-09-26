@@ -21,6 +21,7 @@
     "nanoid": "^3.1.25",
     "nuxt": "^2.15.8",
     "tiptap-vuetify": "^2.24.0",
+    "v-mask": "^2.2.4",
     "vue-sweetalert2": "^5.0.2",
     "vuetify": "^2.5.8",
     "vuetify-cleave": "^0.4.0"

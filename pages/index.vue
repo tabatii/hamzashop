@@ -29,11 +29,11 @@
 					<v-col cols="12" lg="4" v-for="product in products.data" :key="product.id">
 						<v-hover>
 							<template v-slot:default="{ hover }">
-								<div style="position:relative">
-									<v-img :src="product.images[0].url" lazy-src="/template/placeholder.png" width="100%" />
-									<div class="text-center pa-4 pt-0">
+								<div class="bg" style="position:relative">
+									<v-img class="rounded-circle" :src="product.images[0].url" lazy-src="/template/placeholder.png" width="100%" />
+									<div class="text-center pa-4">
 										<p class="text-h5 font-weight-light" v-text="product.shortTitle"></p>
-										<p class="text-h6 font-weight-light error--text">
+										<p class="text-h6 font-weight-light error--text mb-0">
 											<span v-text="$currency(product.price)"></span>
 											<span v-text="$cookies.get('cc')"></span>
 										</p>

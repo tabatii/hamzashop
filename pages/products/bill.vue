@@ -56,10 +56,10 @@
 								</v-col>
 								<v-col md="6" class="py-0">
 									<v-text-field
+										v-mask="'#####'"
 										v-model="form.zip"
 										:label="$lang('address.form.zip')"
 										:error-messages="errors.zip"
-										counter="5"
 										outlined
 									/>
 								</v-col>
